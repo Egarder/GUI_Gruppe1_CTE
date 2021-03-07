@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Windows.Documents;
 
 namespace TheDebtBook.Models
 {
@@ -8,6 +10,7 @@ namespace TheDebtBook.Models
         private string _name;
         private string _balance;
         private string _lastupdated;
+        private List<Debt> _debts;
         public DebitorCreditor(string name)
         {
             _name = name;

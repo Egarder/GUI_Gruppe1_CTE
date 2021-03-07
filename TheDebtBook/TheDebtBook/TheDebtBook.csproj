@@ -103,6 +103,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DebitorCreditor.cs" />
+    <Compile Include="Models\Debt.cs" />
     <Compile Include="ViewModels\DebtorsViewModel.cs" />
     <Compile Include="ViewModels\DebtsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
