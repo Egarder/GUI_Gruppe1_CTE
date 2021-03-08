@@ -7,6 +7,7 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
+
         Title="The Debt Book" Height="380" Width="280"
         Background="{StaticResource BackgroundBrush}">
 
@@ -35,6 +36,10 @@
                       ItemsSource="{Binding Path=DebitorsCreditors}"
                       IsSynchronizedWithCurrentItem="True"
                       ItemTemplate="{StaticResource DebitorCreditorTemplate}">
+
+                <DataGrid.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=EditDebtorCommand}"></MouseBinding>
+                </DataGrid.InputBindings>
                 <DataGrid.Effect>
                     <DropShadowEffect ShadowDepth="2"/>
                 </DataGrid.Effect>
@@ -42,7 +47,7 @@
         </StackPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="Add Debitor/Creditor">
+            <Button Content="Add Debitor/Creditor" Command="{Binding Path=AddDebtorCommand}">
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                 </Button.Effect>

@@ -1,34 +1,98 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using TheDebtBook.Models;
 
 namespace TheDebtBook.ViewModels
 {
-    public class EditShowDetailViewModel : BindableBase
+    public class EditShowDetailViewModel : BindableBase, IDialogAware
     {
+        private Debitors _currentDebitor;
+        private ObservableCollection<Debt> _debitorCreditorDetails;
+        private Debt _currentPost;
+       private int currentIndex = -1;
 
-        private Debitors _currentDebitors;
-
-        public Debitors CurrentAgent
+        public EditShowDetailViewModel(Debitors debitor)
         {
-            get { return _currentDebitors; }
-            set { SetProperty(ref _currentDebitors, value); }
+
+            CurrentDebitor = debitor;
+
+            DebitorCreditorDetails = new ObservableCollection<Debt>();
+
+            DebitorCreditorDetails = _currentDebitor._debts;
+
+            CurrentPost = DebitorCreditorDetails[0];
         }
 
-        private ObservableCollection<Debt> _debitorCreditorDetails;
+        public int CurrentIndex
+        {
+            get { return currentIndex; }
+            set
+            {
+                SetProperty(ref currentIndex, value);
+            }
+        }
+
+        public Debt CurrentPost
+        {
+            get { return _currentPost;}
+            set { SetProperty(ref _currentPost, value); }
+        }
+
+        public Debitors CurrentDebitor
+        {
+            get { return _currentDebitor; }
+            set { SetProperty(ref _currentDebitor, value); }
+        }
+
 
         public ObservableCollection<Debt> DebitorCreditorDetails
         {
             get { return _debitorCreditorDetails; }
+            set => _debitorCreditorDetails = value;
         }
 
-        public EditShowDetailViewModel()
+
+        ///Commands
+        ///
+        private ICommand _newPost;
+
+        public ICommand NewPost
         {
-            _debitorCreditorDetails = new ObservableCollection<Debt>();
-
-            _debitorCreditorDetails = _currentDebitors._debts;
+            get
+            {
+                return _newPost ?? (_newPost = new DelegateCommand(() =>
+                {
+                    var newpost = new Debt();
+                   DebitorCreditorDetails.Add(newpost);
+                   CurrentPost = newpost;
+                   CurrentIndex = 0;
+                }));
+            }
         }
+
+
+
+        //Dialogaware
+        public bool CanCloseDialog()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDialogClosed()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnDialogOpened(IDialogParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Title { get; }
+        public event Action<IDialogResult> RequestClose;
     }
 }

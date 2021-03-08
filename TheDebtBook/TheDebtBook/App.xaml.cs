@@ -15,7 +15,7 @@ namespace TheDebtBook
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MainWindow, MainWindowViewModel>();
-            containerRegistry.RegisterDialog<DebtsView, DebtsViewModel>();
+            containerRegistry.RegisterDialog<DebtsView, AddViewModel>();
             containerRegistry.RegisterDialog<DebtorsView, EditShowDetailViewModel>();
         }
 

@@ -42,6 +42,7 @@
                  Grid.Column="1"
                  Margin="10,12,10,12"/>
         <TextBox Name="txbAddViewDept"
+                 Text="{Binding Path=CurrentDebitor.Balance}"
                  Grid.Row="2"
                  Grid.Column="1"
                  Margin="10,12,10,12"/>
