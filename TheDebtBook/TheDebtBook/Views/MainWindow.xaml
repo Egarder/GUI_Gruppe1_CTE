@@ -36,6 +36,10 @@
                       ItemsSource="{Binding Path=DebitorsCreditors}"
                       IsSynchronizedWithCurrentItem="True"
                       ItemTemplate="{StaticResource DebitorCreditorTemplate}">
+
+                <DataGrid.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=EditDebtorCommand}"></MouseBinding>
+                </DataGrid.InputBindings>
                 <DataGrid.Effect>
                     <DropShadowEffect ShadowDepth="2"/>
                 </DataGrid.Effect>
