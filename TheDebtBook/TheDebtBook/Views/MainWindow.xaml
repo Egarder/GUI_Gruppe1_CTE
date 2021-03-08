@@ -42,12 +42,12 @@
         </StackPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="Add">
+            <Button Content="Add Debitor/Creditor">
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                 </Button.Effect>
             </Button>
-            <Button Content="Edit">
+            <Button Content="Edit Existing Debitor/Creditor">
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                 </Button.Effect>
