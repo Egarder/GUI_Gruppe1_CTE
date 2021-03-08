@@ -7,6 +7,18 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using TheDebtBook.Models;
+using TheDebtBook.Views;
+using Microsoft.Win32;
+using System.Threading;
+using System;
+using System.ComponentModel;
+using System.IO;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
+using System.Windows.Threading;
+
 
 namespace TheDebtBook.ViewModels
 {
@@ -67,14 +79,24 @@ namespace TheDebtBook.ViewModels
         {
             get
             {
-                return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(AddDebtorExcecute));
+                return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(()=>
+                {
+                    var newDebitor = new Debitors("Insert name");
+                    var addVM = new AddViewModel(newDebitor);
+                    //Is AddView, naming error
+                    var dlg = new DebtsView() 
+                    {
+                        DataContext = addVM
+                    };
+                    if(dlg.ShowDialog() == true)
+                    {
+                        _debitorsCreditors.Add(newDebitor);
+                        CurrentDebitorCreditor = newDebitor;
+                    }
+                }));
             }
         }
 
-        private void AddDebtorExcecute()
-        {
-            _iDialogService.ShowDialog("DebtorsView");
-        }
 
         #endregion
 
