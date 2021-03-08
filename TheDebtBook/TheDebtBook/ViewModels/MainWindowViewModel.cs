@@ -36,9 +36,9 @@ namespace TheDebtBook.ViewModels
             _debitorsCreditors = new ObservableCollection<Debitors>()
             {
                 #if DEBUG
-                new Debitors("Rasmus Trads", "-120000"),
-                new Debitors("Kurt Thorsen", "-375000"),
-                new Debitors("Stein Bagger", "-575000")
+                new Debitors("Rasmus Trads",(new Debt("dildos",-100))),
+                new Debitors("Kurt Thorsen",(new Debt("cocaine",-1000))),
+                new Debitors("Stein Bagger",(new Debt("teddybears",-1000)))
                 #endif
             };
         }

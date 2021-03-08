@@ -10,7 +10,7 @@ namespace TheDebtBook.Models
     public class Debt
     {
         private double _amount;
-
+        private string _postname;
         private string _lastupdated;
 
         // Default constructor
@@ -23,6 +23,17 @@ namespace TheDebtBook.Models
             _amount = amount;
         }
 
+        public Debt(string postname, double amount)
+        {
+            _amount = amount;
+            PostName = postname;
+        }
+
+        public string PostName
+        {
+            get { return _postname;}
+            set { _postname = value; }
+        }
         public double Amount
         {
             get => _amount;
