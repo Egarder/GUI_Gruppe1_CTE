@@ -8,9 +8,8 @@ using TheDebtBook.Models;
 
 namespace TheDebtBook.ViewModels
 {
-    public class EditShowDetailViewModel : BindableBase, IDialogAware
+    public class EditShowDetailViewModel : BindableBas
     {
-
         private Debitors _currentDebitor;
         private ObservableCollection<Debt> _debitorCreditorDetails;
         private Debt _currentPost;
@@ -18,6 +17,7 @@ namespace TheDebtBook.ViewModels
 
         public EditShowDetailViewModel(Debitors debitor)
         {
+
             CurrentDebitor = debitor;
 
             DebitorCreditorDetails = new ObservableCollection<Debt>();
@@ -75,28 +75,5 @@ namespace TheDebtBook.ViewModels
         }
 
 
-
-        /// <summary>
-        /// /IDialogAware
-        /// </summary>
-        /// <returns></returns>
-
-        public bool CanCloseDialog()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnDialogClosed()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnDialogOpened(IDialogParameters parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string Title { get; }
-        public event Action<IDialogResult> RequestClose;
     }
 }
