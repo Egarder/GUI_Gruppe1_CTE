@@ -35,7 +35,8 @@
             <DataGrid MinHeight="200" MaxWidth="230"
                       ItemsSource="{Binding Path=DebitorsCreditors}"
                       IsSynchronizedWithCurrentItem="True"
-                      ItemTemplate="{StaticResource DebitorCreditorTemplate}">
+                      ItemTemplate="{StaticResource DebitorCreditorTemplate}"
+                      IsReadOnly="true">
 
                 <DataGrid.InputBindings>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=EditDebtorCommand}"></MouseBinding>
