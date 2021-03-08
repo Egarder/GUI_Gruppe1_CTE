@@ -1,23 +1,34 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using TheDebtBook.Models;
 
 namespace TheDebtBook.ViewModels
 {
-    public class EditShowDetailViewModel : IDialogAware
+    public class EditShowDetailViewModel : BindableBase
     {
-        public bool CanCloseDialog() => true;
 
-        public void OnDialogClosed()
+        private Debitors _currentDebitors;
+
+        public Debitors CurrentAgent
         {
-            
+            get { return _currentDebitors; }
+            set { SetProperty(ref _currentDebitors, value); }
         }
 
-        public void OnDialogOpened(IDialogParameters parameters)
+        private ObservableCollection<Debt> _debitorCreditorDetails;
+
+        public ObservableCollection<Debt> DebitorCreditorDetails
         {
-            
+            get { return _debitorCreditorDetails; }
         }
 
-        public string Title { get; }
-        public event Action<IDialogResult> RequestClose;
+        public EditShowDetailViewModel()
+        {
+            _debitorCreditorDetails = new ObservableCollection<Debt>();
+
+            _debitorCreditorDetails = _currentDebitors._debts;
+        }
     }
 }

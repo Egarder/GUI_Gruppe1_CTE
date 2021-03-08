@@ -7,7 +7,7 @@ using Prism.Mvvm;
 
 namespace TheDebtBook.Models
 {
-    class Debt
+    public class Debt
     {
         private double _amount;
 

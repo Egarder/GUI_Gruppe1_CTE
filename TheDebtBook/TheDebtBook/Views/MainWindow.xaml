@@ -47,7 +47,7 @@
                     <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                 </Button.Effect>
             </Button>
-            <Button Content="Remove">
+            <Button Content="Remove debitor/creditor">
                     <Button.Effect>
                         <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                     </Button.Effect>
