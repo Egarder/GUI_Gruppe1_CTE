@@ -10,6 +10,7 @@ namespace TheDebtBook.Models
     {
         private string _name;
         private string _balance;
+        private string _latestdate;
         public ObservableCollection<Debt> _debts;
 
         public Debitors(string name)
@@ -39,7 +40,11 @@ namespace TheDebtBook.Models
             set => _balance = value;
         }
 
-       
+       public string LatestDebt 
+        {
+            get => DateTime.Now.ToLongDateString();
+            set => _latestdate = DateTime.Now.ToLongDateString(); 
+        }
 
         #endregion
     }

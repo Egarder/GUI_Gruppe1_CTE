@@ -13,7 +13,7 @@
         <StackPanel>
             <TextBlock Text="Details of debt:" HorizontalAlignment="Center"/>
             <ToolBar HorizontalAlignment="Center">
-                <Button Content="Close window" Click="CloseWindowClick" />
+                <Button Content="Close window" />
                 <Button Content="Add post"
                         Command="{Binding Path=NewPost}"
                 />
