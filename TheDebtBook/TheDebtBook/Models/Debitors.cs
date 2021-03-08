@@ -10,11 +10,13 @@ namespace TheDebtBook.Models
     {
         private string _name;
         private string _balance;
+        private string _latestdate;
         public ObservableCollection<Debt> _debts;
 
         public Debitors(string name)
         {
             _name = name;
+            _debts = new ObservableCollection<Debt>();
         }
 
         // +1 overload
@@ -22,8 +24,39 @@ namespace TheDebtBook.Models
         {
             _name = name;
             _balance = balance;
+            _debts = new ObservableCollection<Debt>();
+        }
+        public Debitors(string name, Debt debt)
+        {
+            _name = name;
+            _debts = new ObservableCollection<Debt>();
+
+            if (debt != null)
+                _debts.Add(debt);
+
+            _balance = debt.Amount.ToString();
+        }
+        public Debitors(string name, string balance, Debt debt)
+        {
+            _name = name;
+            _balance = balance;
+            _debts = new ObservableCollection<Debt>();
+
+            if (debt != null) 
+                _debts.Add(debt);
         }
 
+        public string SumOfDebt()
+        {
+            double tempdebt = 0;
+
+            foreach (Debt element in _debts)
+            {
+                tempdebt += element.Amount;
+            }
+
+            return (tempdebt.ToString());
+        }
 
         #region Properties
 
@@ -35,11 +68,15 @@ namespace TheDebtBook.Models
 
         public string Balance
         {
-            get { return _balance; }
+            get { return SumOfDebt(); }
             set => _balance = value;
         }
 
-       
+       public string LatestDebt 
+        {
+            get => DateTime.Now.ToLongDateString();
+            set => _latestdate = DateTime.Now.ToLongDateString(); 
+        }
 
         #endregion
     }
