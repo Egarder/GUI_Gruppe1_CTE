@@ -21,7 +21,7 @@
                 MinHeight="150" 
                 MinWidth="170" 
                 Name="ListOfDetails"
-                ItemsSource="{Binding Path= _debts}"
+                ItemsSource="{Binding Path= }"
                 >
 
                 

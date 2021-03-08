@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Documents;
 
@@ -9,7 +10,8 @@ namespace TheDebtBook.Models
     {
         private string _name;
         private string _balance;
-        private List<Debt> _debts;
+        public ObservableCollection<Debt> _debts;
+
         public Debitors(string name)
         {
             _name = name;
