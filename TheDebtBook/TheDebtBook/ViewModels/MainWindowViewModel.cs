@@ -106,7 +106,7 @@ namespace TheDebtBook.ViewModels
 
                     _iDialogService.ShowDialog("DebtorsView", null, (r) =>
                     {
-                        
+
                     });
                 }));
             }
