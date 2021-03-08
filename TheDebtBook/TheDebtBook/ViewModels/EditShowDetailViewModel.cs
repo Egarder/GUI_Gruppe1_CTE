@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -24,7 +25,7 @@ namespace TheDebtBook.ViewModels
 
             DebitorCreditorDetails = _currentDebitor._debts;
 
-            CurrentPost = DebitorCreditorDetails[0];
+            //CurrentPost = DebitorCreditorDetails[0];
         }
 
         public int CurrentIndex
@@ -79,17 +80,17 @@ namespace TheDebtBook.ViewModels
         //Dialogaware
         public bool CanCloseDialog()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void OnDialogClosed()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void OnDialogOpened(IDialogParameters parameters)
         {
-            throw new NotImplementedException();
+            CurrentDebitor = ((App) Application.Current).Debitor;
         }
 
         public string Title { get; }

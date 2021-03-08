@@ -110,6 +110,12 @@ namespace TheDebtBook.ViewModels
                 LatestDebt = CurrentDebitorCreditor.LatestDebt
             };
 
+            ((App) Application.Current).Debitor = tempdebitor;
+
+            _iDialogService.ShowDialog("DebtorsView", null, r =>
+            {
+                
+            });
 
         }
 

@@ -2,6 +2,7 @@
 using System.Windows;
 using Prism.Unity;
 using Prism.Ioc;
+using TheDebtBook.Models;
 using TheDebtBook.ViewModels;
 using TheDebtBook.Views;
 
@@ -23,5 +24,7 @@ namespace TheDebtBook
         {
             return Container.Resolve<MainWindow>();
         }
+
+        public Debitors Debitor { get; set; }
     }
 }
