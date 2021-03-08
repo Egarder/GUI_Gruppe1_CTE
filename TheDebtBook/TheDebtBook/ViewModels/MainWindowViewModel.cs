@@ -14,7 +14,9 @@ namespace TheDebtBook.ViewModels
     {
         private IDialogService _iDialogService;
         private ObservableCollection<Debitors> _debitorsCreditors;
-        
+        private DebitorCreditor _currentDebitorCreditor = null;
+        private int _currentIndex = -1;
+
         public MainWindowViewModel(IDialogService dialogService)
         {
             _iDialogService = dialogService;
@@ -34,6 +36,24 @@ namespace TheDebtBook.ViewModels
         public ObservableCollection<Debitors> DebitorsCreditors
         {
             get { return _debitorsCreditors; }
+        }
+
+        public DebitorCreditor CurrentDebitorCreditor
+        {
+            get { return _currentDebitorCreditor; }
+            set
+            {
+                SetProperty(ref _currentDebitorCreditor, value);
+            }
+        }
+
+        public int CurrentIndex
+        {
+            get { return _currentIndex; }
+            set
+            {
+                SetProperty(ref _currentIndex, value);
+            }
         }
 
         #endregion
