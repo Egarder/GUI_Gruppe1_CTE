@@ -1,26 +1,38 @@
 ﻿using System;
+using Prism.Mvvm;
 using Prism.Services.Dialogs;
+using TheDebtBook.Models;
 
 namespace TheDebtBook.ViewModels
 {
-    public class DebtsViewModel : IDialogAware
+    public class DebtsViewModel : BindableBase
     {
-        public bool CanCloseDialog()
+        Debitors _currentDebitor;
+        public DebtsViewModel(Debitors debitor)
         {
-            throw new NotImplementedException();
+            CurrentDebitor = debitor;
         }
 
-        public void OnDialogClosed()
+        public Debitors CurrentDebitor
         {
-            throw new NotImplementedException();
+            get { return _currentDebitor; }
+            set
+            {
+                SetProperty(ref _currentDebitor, value);
+            }
         }
 
-        public void OnDialogOpened(IDialogParameters parameters)
+        public bool IsValid
         {
-            throw new NotImplementedException();
+            get
+            {
+                bool isValid = true;
+                if (string.IsNullOrWhiteSpace(CurrentDebitor.Name))
+                    isValid = false;
+                if (string.IsNullOrWhiteSpace(CurrentDebitor.Balance))
+                    isValid = false;
+                return isValid;
+            }
         }
-
-        public string Title { get; }
-        public event Action<IDialogResult> RequestClose;
     }
 }
