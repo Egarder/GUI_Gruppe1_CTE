@@ -95,21 +95,28 @@ namespace TheDebtBook.ViewModels
 
 
         //Go to EditShowDetailView
-        private ICommand _editDebtorCommand;
+        private DelegateCommand _editDebtorCommand;
 
-        public ICommand EditDebtorCommand
+        public DelegateCommand EditDebtorCommand =>
+            _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand(ShowEditDebtorCommand));
+
+        public void ShowEditDebtorCommand()
         {
-            get
+            var tempdebitor = new Debitors()
             {
-                return _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand(() =>
-                {
+                _debts = CurrentDebitorCreditor._debts,
+                Name = CurrentDebitorCreditor.Name,
+                Balance = CurrentDebitorCreditor.Balance,
+                LatestDebt = CurrentDebitorCreditor.LatestDebt
+            };
 
-                    _iDialogService.ShowDialog("DebtorsView", null, (r) =>
-                    {
+            ((App) Application.Current).Debitor = tempdebitor;
 
-                    });
-                }));
-            }
+            _iDialogService.ShowDialog("DebtorsView", null, r =>
+            {
+                
+            });
+
         }
 
 
