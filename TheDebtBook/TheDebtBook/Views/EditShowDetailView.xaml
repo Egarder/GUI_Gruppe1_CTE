@@ -10,9 +10,9 @@
         <StackPanel>
             <TextBlock Text="Debtors:" HorizontalAlignment="Center"/>
             <ToolBar HorizontalAlignment="Center">
-                <Button Content="Add"/>
+                <Button Content="Close"/>
                 <Button Content="Edit"/>
-                <Button Content="Remove"/>
+                <Button Content="Remove post"/>
             </ToolBar>
             <DataGrid MinHeight="150" MinWidth="170"/>
         </StackPanel>
