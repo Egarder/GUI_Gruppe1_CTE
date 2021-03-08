@@ -20,7 +20,7 @@ namespace TheDebtBook.Views
     /// <summary>
     /// Interaction logic for DebtorsView.xaml
     /// </summary>
-    public partial class DebtorsView : Window
+    public partial class DebtorsView : UserControl
     {
         public DebtorsView()
         {
