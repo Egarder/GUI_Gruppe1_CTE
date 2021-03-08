@@ -56,7 +56,6 @@ namespace TheDebtBook.ViewModels
         }
 
 
-
         ///Commands
         ///
         private ICommand _newPost;
@@ -68,25 +67,19 @@ namespace TheDebtBook.ViewModels
                 return _newPost ?? (_newPost = new DelegateCommand(() =>
                 {
                     var newpost = new Debt();
-                    var vm = new EditShowDetailViewModel(CurrentDebitor)
-                    {
-                        DebitorCreditorDetails = _debitorCreditorDetails
-                    };
-
-                    var dlg = new EditShowDetailViewModel(CurrentDebitor)
-                    {
-                        DataContext = vm
-                    };
-                    if (dlg.ShowDialog() == true)
-                    {
-                        Agents.Add(newpost);
-                        CurrentAgent = newpost;
-                        CurrentSpecialityIndex = 0;
-                        Dirty = true;
-                    }
+                   DebitorCreditorDetails.Add(newpost);
+                   CurrentPost = newpost;
+                   CurrentIndex = 0;
                 }));
             }
         }
+
+
+
+        /// <summary>
+        /// /IDialogAware
+        /// </summary>
+        /// <returns></returns>
 
         public bool CanCloseDialog()
         {
