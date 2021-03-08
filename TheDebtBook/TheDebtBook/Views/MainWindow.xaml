@@ -25,7 +25,7 @@
                 </Label.Effect>
             </Label>
 
-            <Label Content="Double click to edit/add Creditors/debitors" HorizontalAlignment="Center" FontSize="12">
+            <Label Content="Double click at creditor/debitor to edit" HorizontalAlignment="Center" FontSize="12">
                 <Label.Effect>
                     <DropShadowEffect Color="Black" ShadowDepth="2" RenderingBias="Performance" BlurRadius="10"/>
                 </Label.Effect>
