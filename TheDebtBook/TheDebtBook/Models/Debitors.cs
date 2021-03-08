@@ -5,19 +5,19 @@ using System.Windows.Documents;
 
 namespace TheDebtBook.Models
 {
-    public class DebitorCreditor
+    public class Debitors
     {
         private string _name;
         private string _balance;
         private string _lastupdated;
         private List<Debt> _debts;
-        public DebitorCreditor(string name)
+        public Debitors(string name)
         {
             _name = name;
         }
 
         // +1 overload
-        public DebitorCreditor(string name, string balance)
+        public Debitors(string name, string balance)
         {
             _name = name;
             _balance = balance;

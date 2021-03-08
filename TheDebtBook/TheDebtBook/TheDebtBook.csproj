@@ -86,11 +86,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\DebtorsView.xaml">
+    <Page Include="Views\EditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DebtsView.xaml">
+    <Page Include="Views\AddDeleteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,16 +102,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\DebitorCreditor.cs" />
+    <Compile Include="Models\Debitors.cs" />
     <Compile Include="Models\Debt.cs" />
-    <Compile Include="ViewModels\DebtorsViewModel.cs" />
-    <Compile Include="ViewModels\DebtsViewModel.cs" />
+    <Compile Include="ViewModels\EditViewModel.cs" />
+    <Compile Include="ViewModels\AddDeleteViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\DebtorsView.xaml.cs">
-      <DependentUpon>DebtorsView.xaml</DependentUpon>
+    <Compile Include="Views\EditView.xaml.cs">
+      <DependentUpon>EditView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DebtsView.xaml.cs">
-      <DependentUpon>DebtsView.xaml</DependentUpon>
+    <Compile Include="Views\AddDeleteView.xaml.cs">
+      <DependentUpon>AddDeleteView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

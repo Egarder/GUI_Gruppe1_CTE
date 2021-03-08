@@ -13,25 +13,25 @@ namespace TheDebtBook.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private IDialogService _iDialogService;
-        private ObservableCollection<DebitorCreditor> _debitorsCreditors;
+        private ObservableCollection<Debitors> _debitorsCreditors;
         
         public MainWindowViewModel(IDialogService dialogService)
         {
             _iDialogService = dialogService;
             
-            _debitorsCreditors = new ObservableCollection<DebitorCreditor>()
+            _debitorsCreditors = new ObservableCollection<Debitors>()
             {
                 #if DEBUG
-                new DebitorCreditor("Rasmus Trads", "-120000"),
-                new DebitorCreditor("Kurt Thorsen", "-375000"),
-                new DebitorCreditor("Stein Bagger", "-575000")
+                new Debitors("Rasmus Trads", "-120000"),
+                new Debitors("Kurt Thorsen", "-375000"),
+                new Debitors("Stein Bagger", "-575000")
                 #endif
             };
         }
 
         #region Properties
 
-        public ObservableCollection<DebitorCreditor> DebitorsCreditors
+        public ObservableCollection<Debitors> DebitorsCreditors
         {
             get { return _debitorsCreditors; }
         }
