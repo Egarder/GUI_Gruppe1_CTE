@@ -14,7 +14,7 @@ namespace TheDebtBook.ViewModels
     {
         private IDialogService _iDialogService;
         private ObservableCollection<Debitors> _debitorsCreditors;
-        private DebitorCreditor _currentDebitorCreditor = null;
+        private Debitors _currentDebitorCreditor = null;
         private int _currentIndex = -1;
 
         public MainWindowViewModel(IDialogService dialogService)
