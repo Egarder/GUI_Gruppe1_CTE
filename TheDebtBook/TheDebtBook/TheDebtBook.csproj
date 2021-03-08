@@ -86,11 +86,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\EditView.xaml">
+    <Page Include="Views\EditDeleteView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AddDeleteView.xaml">
+    <Page Include="Views\AddView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,14 +104,14 @@
     </Compile>
     <Compile Include="Models\Debitors.cs" />
     <Compile Include="Models\Debt.cs" />
-    <Compile Include="ViewModels\EditViewModel.cs" />
-    <Compile Include="ViewModels\AddDeleteViewModel.cs" />
+    <Compile Include="ViewModels\EditDeleteViewModel.cs" />
+    <Compile Include="ViewModels\AddViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Views\EditView.xaml.cs">
-      <DependentUpon>EditView.xaml</DependentUpon>
+    <Compile Include="Views\EditDeleteView.xaml.cs">
+      <DependentUpon>EditDeleteView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AddDeleteView.xaml.cs">
-      <DependentUpon>AddDeleteView.xaml</DependentUpon>
+    <Compile Include="Views\AddView.xaml.cs">
+      <DependentUpon>AddView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
