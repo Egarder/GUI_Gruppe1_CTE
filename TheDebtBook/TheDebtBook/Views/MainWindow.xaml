@@ -47,12 +47,7 @@
                     <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                 </Button.Effect>
             </Button>
-            <Button Content="Edit Existing Debitor/Creditor">
-                <Button.Effect>
-                    <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
-                </Button.Effect>
-            </Button>
-                <Button Content="Remove">
+            <Button Content="Remove">
                     <Button.Effect>
                         <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                     </Button.Effect>

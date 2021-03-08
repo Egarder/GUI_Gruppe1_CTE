@@ -3,7 +3,7 @@ using Prism.Services.Dialogs;
 
 namespace TheDebtBook.ViewModels
 {
-    public class EditDeleteViewModel : IDialogAware
+    public class EditShowDetailViewModel : IDialogAware
     {
         public bool CanCloseDialog() => true;
 
