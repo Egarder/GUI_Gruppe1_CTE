@@ -11,6 +11,8 @@ namespace TheDebtBook.Models
     {
         private double _amount;
 
+        private string _lastupdated;
+
         // Default constructor
         public Debt()
         { }
@@ -25,6 +27,15 @@ namespace TheDebtBook.Models
         {
             get => _amount;
             set => _amount = value;
+        }
+
+        public string LastUpdated
+        {
+            get
+            {
+                return DateTime.Now.ToLongDateString();
+            }
+            set => _lastupdated = value;
         }
     }
 }

@@ -6,15 +6,7 @@
              xmlns:local="clr-namespace:TheDebtBook.Views"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200">
-    <Grid>
-        <StackPanel>
-            <TextBlock Text="Debt:" HorizontalAlignment="Center"/>
-            <ToolBar HorizontalAlignment="Center">
-                <Button Content="Add"/>
-                <Button Content="Edit"/>
-                <Button Content="Remove"/>
-            </ToolBar>
-            <DataGrid MinHeight="150" MinWidth="170"/>
-        </StackPanel>
+    <Grid Background="Beige">
+        
     </Grid>
 </UserControl>
