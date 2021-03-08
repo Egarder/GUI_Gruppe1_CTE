@@ -82,17 +82,12 @@ namespace TheDebtBook.ViewModels
                 return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(()=>
                 {
                     var newDebitor = new Debitors("Insert name");
-                    var addVM = new AddViewModel(newDebitor);
                     //Is AddView, naming error
-                    var dlg = new DebtsView() 
-                    {
-                        DataContext = addVM
-                    };
-                    if(dlg.ShowDialog() == true)
-                    {
-                        _debitorsCreditors.Add(newDebitor);
-                        CurrentDebitorCreditor = newDebitor;
-                    }
+                    _iDialogService.ShowDialog("DebtsView", null, (r) =>
+                       {
+                           _debitorsCreditors.Add(newDebitor);
+                           CurrentDebitorCreditor = newDebitor;
+                       });
                 }));
             }
         }
