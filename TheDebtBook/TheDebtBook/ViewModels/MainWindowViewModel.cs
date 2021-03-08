@@ -39,6 +39,7 @@ namespace TheDebtBook.ViewModels
                 new Debitors("Rasmus Trads",(new Debt("dildos",-100))),
                 new Debitors("Kurt Thorsen",(new Debt("cocaine",-1000))),
                 new Debitors("Stein Bagger",(new Debt("teddybears",-1000)))
+
                 #endif
             };
         }

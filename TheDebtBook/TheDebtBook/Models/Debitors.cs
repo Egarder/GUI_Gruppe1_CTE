@@ -79,6 +79,11 @@ namespace TheDebtBook.Models
             set => _latestdate = DateTime.Now.ToLongDateString(); 
         }
 
+       public void addDebt(string postname, double postvalue)
+       {
+           _debts.Add(new Debt(postname, postvalue));
+       }
+
         #endregion
     }
 }
