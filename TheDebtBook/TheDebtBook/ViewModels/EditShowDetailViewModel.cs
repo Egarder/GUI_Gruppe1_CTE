@@ -10,7 +10,6 @@ namespace TheDebtBook.ViewModels
 {
     public class EditShowDetailViewModel : BindableBase, IDialogAware
     {
-
         private Debitors _currentDebitor;
         private ObservableCollection<Debt> _debitorCreditorDetails;
         private Debt _currentPost;
@@ -18,6 +17,7 @@ namespace TheDebtBook.ViewModels
 
         public EditShowDetailViewModel(Debitors debitor)
         {
+
             CurrentDebitor = debitor;
 
             DebitorCreditorDetails = new ObservableCollection<Debt>();
@@ -97,6 +97,7 @@ namespace TheDebtBook.ViewModels
         }
 
         public string Title { get; }
+
         public event Action<IDialogResult> RequestClose;
     }
 }
