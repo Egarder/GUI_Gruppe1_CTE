@@ -73,6 +73,7 @@ namespace TheDebtBook.ViewModels
 
         #region Commands
 
+        //Go to Add view
         private ICommand _addDebtorCommand;
 
         public ICommand AddDebtorCommand
@@ -88,6 +89,25 @@ namespace TheDebtBook.ViewModels
                            _debitorsCreditors.Add(newDebitor);
                            CurrentDebitorCreditor = newDebitor;
                        });
+                }));
+            }
+        }
+
+
+        //Go to EditShowDetailView
+        private ICommand _editDebtorCommand;
+
+        public ICommand EditDebtorCommand
+        {
+            get
+            {
+                return _editDebtorCommand ?? (_editDebtorCommand = new DelegateCommand(() =>
+                {
+
+                    _iDialogService.ShowDialog("DebtorsView", null, (r) =>
+                    {
+
+                    });
                 }));
             }
         }
