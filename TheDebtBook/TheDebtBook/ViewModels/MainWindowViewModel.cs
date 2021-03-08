@@ -38,7 +38,7 @@ namespace TheDebtBook.ViewModels
             get { return _debitorsCreditors; }
         }
 
-        public DebitorCreditor CurrentDebitorCreditor
+        public Debitors CurrentDebitorCreditor
         {
             get { return _currentDebitorCreditor; }
             set
