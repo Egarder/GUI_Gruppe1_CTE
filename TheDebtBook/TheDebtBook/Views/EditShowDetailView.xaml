@@ -13,15 +13,22 @@
             <TextBlock Text="Details of debt:" HorizontalAlignment="Center"/>
             <ToolBar HorizontalAlignment="Center">
                 <Button Content="Close window"/>
-                <Button Content="Edit post"/>
+                <Button Content="Add post"
+                        Command="{Binding Path=NewPost}"
+                />
                 <Button Content="Remove post"/>
             </ToolBar>
 
             <DataGrid 
                 MinHeight="150" 
-                MinWidth="170" 
                 Name="ListOfDetails"
-                ItemsSource="{Binding Path= }"
+                ItemsSource="{Binding Path= CurrentDebitor.DebitorCreditorDetails }"
+                SelectedItem="{Binding Path= CurrentPost}"
+                SelectedIndex="{Binding Path=CurrentIndex}"
+                IsSynchronizedWithCurrentItem="True"
+                CanUserAddRows="True"
+                CanUserDeleteRows="True"
+                IsReadOnly="False"
                 >
 
                 
