@@ -43,7 +43,7 @@
         </StackPanel>
 
         <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="Add Debitor/Creditor">
+            <Button Content="Add Debitor/Creditor" Command="{Binding Path=AddDebtorCommand}">
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                 </Button.Effect>
