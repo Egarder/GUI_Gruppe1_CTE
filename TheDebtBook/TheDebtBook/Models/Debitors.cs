@@ -13,6 +13,7 @@ namespace TheDebtBook.Models
         private string _latestdate;
         public ObservableCollection<Debt> _debts;
 
+        public Debitors() { }
         public Debitors(string name)
         {
             _name = name;
