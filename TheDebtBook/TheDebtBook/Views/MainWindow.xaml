@@ -7,6 +7,7 @@
         xmlns:prism="http://prismlibrary.com/"
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
+
         Title="The Debt Book" Height="380" Width="280"
         Background="{StaticResource BackgroundBrush}">
 

@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TheDebtBook.Views"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewmodels="clr-namespace:TheDebtBook.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MainWindowViewModel}"
              mc:Ignorable="d" 
              Background="{StaticResource BackgroundBrush}"
              d:DesignHeight="200" d:DesignWidth="300">
@@ -12,16 +12,24 @@
         <StackPanel>
             <TextBlock Text="Details of debt:" HorizontalAlignment="Center"/>
             <ToolBar HorizontalAlignment="Center">
-                <Button Content="Close window"/>
-                <Button Content="Edit post"/>
+                <Button Content="Close window" Click="CloseWindowClick" />
+                <Button Content="Add post"
+                        Command="{Binding Path=NewPost}"
+                />
                 <Button Content="Remove post"/>
+                <Button Content="Cancel" IsCancel="True"></Button>
             </ToolBar>
 
             <DataGrid 
                 MinHeight="150" 
-                MinWidth="170" 
                 Name="ListOfDetails"
-                ItemsSource="{Binding Path= }"
+                ItemsSource="{Binding Path= CurrentDebitor.DebitorCreditorDetails }"
+                SelectedItem="{Binding Path= CurrentPost}"
+                SelectedIndex="{Binding Path=CurrentIndex}"
+                IsSynchronizedWithCurrentItem="True"
+                CanUserAddRows="True"
+                CanUserDeleteRows="True"
+                IsReadOnly="False"
                 >
 
                 
