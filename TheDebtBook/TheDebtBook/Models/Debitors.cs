@@ -46,6 +46,7 @@ namespace TheDebtBook.Models
                 _debts.Add(debt);
         }
 
+
         public string SumOfDebt()
         {
             double tempdebt = 0;
