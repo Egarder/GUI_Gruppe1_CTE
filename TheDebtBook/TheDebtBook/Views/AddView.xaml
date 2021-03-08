@@ -3,10 +3,59 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TheDebtBook.Views"
+             xmlns:local="clr-namespace:TheDebtBook.Views" xmlns:viewmodels="clr-namespace:TheDebtBook.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:DebtsViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="200">
+             d:DesignHeight="200" d:DesignWidth="200"
+             MaxHeight="200"
+             MaxWidth="200">
+
     <Grid Background="Beige">
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Add debitor or kreditor"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+        <TextBlock Text="Name:"
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   Margin="10"/>
+        <TextBlock Text="Dept"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   Margin="10"/>
+        <TextBox Name="txbAddViewName"
+                 Text="{Binding Path=CurrentDebitor.Name}"
+                 Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="10,12,10,12"/>
+        <TextBox Name="txbAddViewDept"
+                 Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="10,12,10,12"/>
+        <Button Name="btnAddViewOK"
+                Content="OK"
+                Grid.Column="0"
+                Grid.Row="3"
+                Margin="10,13,10,13"/>
+        <Button Name="btnAddViewCancel"
+                Content="Cancel"
+                Grid.Column="1"
+                Grid.Row="3"
+                Margin="10,13,10,13"/>
+
+
     </Grid>
 </UserControl>
