@@ -14,7 +14,7 @@ namespace TheDebtBook.ViewModels
         private Debitors _currentDebitor;
         private ObservableCollection<Debt> _debitorCreditorDetails;
         private Debt _currentPost;
-       private int currentIndex = -1;
+        private int currentIndex = -1;
 
         public EditShowDetailViewModel(Debitors debitor)
         {
