@@ -8,7 +8,7 @@ using TheDebtBook.Models;
 
 namespace TheDebtBook.ViewModels
 {
-    public class EditShowDetailViewModel : BindableBase
+    public class EditShowDetailViewModel : BindableBas
     {
         private Debitors _currentDebitor;
         private ObservableCollection<Debt> _debitorCreditorDetails;
@@ -73,7 +73,6 @@ namespace TheDebtBook.ViewModels
                 }));
             }
         }
-
 
 
     }
