@@ -123,7 +123,7 @@ namespace TheDebtBook.ViewModels
 
             ((App) Application.Current).Debitor = tempdebitor;
 
-            _iDialogService.ShowDialog("DebtorsView", null, r =>
+            _iDialogService.ShowDialog("EditShowDetailView", null, r =>
             {
                 if (r.Result == ButtonResult.None)
                 {

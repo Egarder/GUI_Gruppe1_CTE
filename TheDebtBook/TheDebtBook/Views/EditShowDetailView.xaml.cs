@@ -5,9 +5,9 @@ namespace TheDebtBook.Views
     /// <summary>
     /// Interaction logic for DebtorsView.xaml
     /// </summary>
-    public partial class DebtorsView : UserControl
+    public partial class EditShowDetailView : UserControl
     {
-        public DebtorsView()
+        public EditShowDetailView()
         {
             InitializeComponent();
         }
