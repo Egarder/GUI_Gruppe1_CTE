@@ -83,6 +83,37 @@ namespace TheDebtBook.ViewModels
 
         #region Commands
 
+        private ICommand _saveFileCommand;
+
+        public ICommand SaveFileCommand
+        {
+            get
+            {
+                return _saveFileCommand ?? (_saveFileCommand =
+                    new DelegateCommand(SaveFileCommandExecute, SaveFileCommandCanExecute).
+                        ObservesProperty(() => DebitorsCreditors.Count));
+            }
+        }
+
+        private void SaveFileCommandExecute()
+        {
+            using (BinaryWriter sw = new BinaryWriter(saveFile.OpenFile()))
+                 {
+                    foreach (var item in DebitorsCreditors)
+                    {
+                        sw.Write(item.ToString());
+                        sw.Flush();
+                    }
+                    sw.Close();
+                }
+            
+        }
+
+        private bool SaveFileCommandCanExecute()
+        {
+            return true;
+        }
+
         //Go to Add view
         private ICommand _addDebtorCommand;
 
