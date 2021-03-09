@@ -94,6 +94,11 @@ namespace TheDebtBook.Models
            _debts.Add(new Debt(postname, postvalue));
        }
 
+       public void UpdateBalance()
+       {
+           Balance = SumOfDebt();
+       }
+
         #endregion
     }
 }
