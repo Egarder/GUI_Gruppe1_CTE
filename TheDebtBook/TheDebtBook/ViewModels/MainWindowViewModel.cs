@@ -101,9 +101,8 @@ namespace TheDebtBook.ViewModels
                 if (r.Result == ButtonResult.OK)
                 {
                     DebitorsCreditors.Add(((App)Application.Current).Debitor);
-                    CurrentDebitorCreditor = DebitorsCreditors[0];
+                    CurrentDebitorCreditor = DebitorsCreditors[DebitorsCreditors.Count-1];
                 }
-                
             });
         }
 
