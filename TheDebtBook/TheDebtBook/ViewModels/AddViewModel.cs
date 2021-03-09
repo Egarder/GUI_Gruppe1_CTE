@@ -13,23 +13,29 @@ namespace TheDebtBook.ViewModels
 {
     public class AddViewModel : BindableBase, IDialogAware
     {
-        Debitors _currentDebitor;
+        private Debitors _currentDebitor;
         private string _title = "Add Debitor";
         private bool _btnOKPressed;
+        private bool isValid = true;
 
         public Debitors CurrentDebitor
         {
             get { return _currentDebitor; }
-            set => _currentDebitor = value;
+            set
+            {
+                SetProperty(ref _currentDebitor, value);
+            }
         }
 
         public bool IsValid
         {
             get
             {
-                bool isValid = true;
                 if (string.IsNullOrWhiteSpace(CurrentDebitor.Name))
                     isValid = false;
+                else 
+                    isValid = true;
+
                 return isValid;
             }
         }
@@ -79,7 +85,7 @@ namespace TheDebtBook.ViewModels
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
-            CurrentDebitor = new Debitors("Default", 0.00, new Debt(0.00));
+            CurrentDebitor = new Debitors("Test");
         }
 
         public event Action<IDialogResult> RequestClose;
