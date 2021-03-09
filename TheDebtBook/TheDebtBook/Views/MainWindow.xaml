@@ -93,8 +93,8 @@
             </Button>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="3" HorizontalAlignment="Center"> 
-            <Button Command="{Binding Path=SaveFileCommand}">Save to file
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center">
+            <Button Command="{Binding Path=SaveFileCommandTxt}">Save to file
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"/>
                 </Button.Effect>

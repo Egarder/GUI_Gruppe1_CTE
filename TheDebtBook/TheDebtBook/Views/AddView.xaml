@@ -8,9 +8,11 @@
              d:DesignHeight="200" d:DesignWidth="200"
              MaxHeight="200"
              MaxWidth="200"
+             Background="{StaticResource BackgroundBrush}"
              prism:ViewModelLocator.AutoWireViewModel="True">
 
-    <Grid Background="Beige">
+
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -54,13 +56,21 @@
                 Content="OK"
                 Grid.Column="0"
                 Grid.Row="3"
-                Margin="10,13,10,13"/>
+                Margin="10,13,10,13">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="2"/>
+            </Button.Effect>
+        </Button>
         <Button Name="btnAddViewCancel"
                 IsCancel="True"
                 Content="Cancel"
                 Grid.Column="1"
                 Grid.Row="3"
-                Margin="10,13,10,13"/>
+                Margin="10,13,10,13">
+            <Button.Effect>
+                <DropShadowEffect ShadowDepth="2"/>
+            </Button.Effect>
+        </Button>
 
 
     </Grid>

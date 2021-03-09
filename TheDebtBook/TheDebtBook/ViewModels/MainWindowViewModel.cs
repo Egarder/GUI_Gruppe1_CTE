@@ -84,23 +84,23 @@ namespace TheDebtBook.ViewModels
 
         #region Commands
 
-        private ICommand _saveFileCommand;
+        private ICommand _saveFileCommandtxt;
 
-        public ICommand SaveFileCommand
+        public ICommand SaveFileCommandTxt
         {
             get
             {
-                return _saveFileCommand ?? (_saveFileCommand =
-                    new DelegateCommand(SaveFileCommandExecute, SaveFileCommandCanExecute).
+                return _saveFileCommandtxt ?? (_saveFileCommandtxt =
+                    new DelegateCommand(SaveFileCommandExecuteTxt, SaveFileCommandCanExecute).
                         ObservesProperty(() => DebitorsCreditors.Count));
             }
         }
 
-        private void SaveFileCommandExecute()
+        private void SaveFileCommandExecuteTxt()
         {
             var sb = new StringBuilder();
 
-            using (var sw = new StreamWriter(@"C:\Users\Emil Garder\source\repos\I4GUI\Gruppe1Repo\GUI_Gruppe1_CTE\TheDebtBook\TheDebtBook\debitors.txt"))
+            using (var sw = new StreamWriter(@"C:\Users\Emil Garder\source\repos\I4GUI\Gruppe1Repo\GUI_Gruppe1_CTE\TheDebtBook\TheDebtBook\debitors.txt")) //local path to project
             {
                     foreach (var item in DebitorsCreditors)
                     {
