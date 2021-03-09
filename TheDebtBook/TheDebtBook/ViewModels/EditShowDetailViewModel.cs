@@ -18,7 +18,6 @@ namespace TheDebtBook.ViewModels
 
         public EditShowDetailViewModel(Debitors debitor)
         {
-
             CurrentDebitor = debitor;
 
             DebitorCreditorDetails = new ObservableCollection<Debt>();

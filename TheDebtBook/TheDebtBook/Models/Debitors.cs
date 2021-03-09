@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows.Documents;
+using Prism.Mvvm;
 
 namespace TheDebtBook.Models
 {
-    public class Debitors
+    public class Debitors: BindableBase
     {
         private string _name;
         private string _balance;
         private string _latestdate;
-        public ObservableCollection<Debt> _debts;
+        private ObservableCollection<Debt> _debts;
 
         public Debitors() { }
         public Debitors(string name)
@@ -45,6 +46,12 @@ namespace TheDebtBook.Models
 
             if (debt != null) 
                 _debts.Add(debt);
+        }
+
+        public ObservableCollection<Debt> Debts
+        {
+            get { return _debts; }
+            set { SetProperty(ref _debts, value); }
         }
 
         public string SumOfDebt()
