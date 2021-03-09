@@ -119,7 +119,7 @@ namespace TheDebtBook.ViewModels
 
         public void OnDialogClosed()
         {
-            
+            CurrentDebitor.UpdateBalance();
         }
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
