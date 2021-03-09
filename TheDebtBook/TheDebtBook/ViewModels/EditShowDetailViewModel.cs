@@ -23,7 +23,7 @@ namespace TheDebtBook.ViewModels
 
             DebitorCreditorDetails = new ObservableCollection<Debt>();
 
-            DebitorCreditorDetails = _currentDebitor._debts;
+            DebitorCreditorDetails = CurrentDebitor._debts;
 
             //CurrentPost = DebitorCreditorDetails[0];
         }
