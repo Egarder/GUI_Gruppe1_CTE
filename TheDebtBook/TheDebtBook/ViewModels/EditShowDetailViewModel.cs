@@ -18,12 +18,11 @@ namespace TheDebtBook.ViewModels
 
         public EditShowDetailViewModel(Debitors debitor)
         {
-
             CurrentDebitor = debitor;
 
             DebitorCreditorDetails = new ObservableCollection<Debt>();
 
-            DebitorCreditorDetails = _currentDebitor._debts;
+            DebitorCreditorDetails = CurrentDebitor.Debts;
 
             //CurrentPost = DebitorCreditorDetails[0];
         }
@@ -88,12 +87,18 @@ namespace TheDebtBook.ViewModels
             
         }
 
-        public void OnDialogOpened(IDialogParameters parameters)
+        public virtual void OnDialogOpened(IDialogParameters parameters)
         {
-            CurrentDebitor = ((App) Application.Current).Debitor;
+            CurrentDebitor = ((App)Application.Current).Debitor;
         }
 
-        public string Title { get; }
+        private string _title = "EditShowDetail dialog";
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
         public event Action<IDialogResult> RequestClose;
     }
 }

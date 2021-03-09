@@ -13,9 +13,9 @@
         <StackPanel>
             <TextBlock Text="Details of debt:" HorizontalAlignment="Center"/>
             <ToolBar HorizontalAlignment="Center">
-                <Button Content="Close window" />
+                <Button Content="Close window" IsDefault="True"/>
                 <Button Content="Add post"
-                        Command="{Binding Path=NewPost}"
+                        Command="{Binding Path = NewPost}"
                 />
                 <Button Content="Remove post"/>
                 <Button Content="Cancel" IsCancel="True"></Button>
@@ -24,13 +24,14 @@
             <DataGrid 
                 MinHeight="150" 
                 Name="ListOfDetails"
-                ItemsSource="{Binding Path= CurrentDebitor.DebitorCreditorDetails }"
+                ItemsSource="{Binding Path= DebitorCreditorDetails }"
                 SelectedItem="{Binding Path= CurrentPost}"
                 SelectedIndex="{Binding Path=CurrentIndex}"
                 IsSynchronizedWithCurrentItem="True"
                 CanUserAddRows="True"
                 CanUserDeleteRows="True"
                 IsReadOnly="False"
+                ItemTemplate="{StaticResource DebtTemplate}"
                 >
 
                 

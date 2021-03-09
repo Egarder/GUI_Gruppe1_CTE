@@ -4,12 +4,18 @@ using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using TheDebtBook.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Media;
 
 namespace TheDebtBook.ViewModels
 {
     public class AddViewModel : BindableBase, IDialogAware
     {
         Debitors _currentDebitor;
+        private string _title = "Add Debitor";
+        
 
         public AddViewModel()
         {
@@ -41,46 +47,52 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        ICommand _btnOKCommand;
-
-        public event Action<IDialogResult> RequestClose;
-
-        public ICommand BtnOKCommand
+        public string Title
         {
-            get
+            get { return _title; }
+            set
             {
-                return _btnOKCommand ?? (_btnOKCommand = new DelegateCommand(
-                    BtnOKCommandExecute, BtnOKCommandCanExecute)
-                    .ObservesProperty(() => CurrentDebitor.Name)
-                    .ObservesProperty(() => CurrentDebitor.Balance));
+                SetProperty(ref _title, value);
             }
         }
 
-        public string Title => throw new NotImplementedException();
+        DelegateCommand<string> _closeBtnCommand;
+        public DelegateCommand<string> CloseBtnCommand => _closeBtnCommand ?? (_closeBtnCommand = new DelegateCommand<string>(CloseDialog));
 
-        private void BtnOKCommandExecute()
+        protected virtual void CloseDialog(string parameter)
         {
-
+            ButtonResult result = ButtonResult.None;
+            if (parameter.ToLower()=="true")
+            {
+                result = ButtonResult.OK;
+                ((App)Application.Current).Debitor = CurrentDebitor;
+            }
+            else if(parameter.ToLower() == "false")
+            {
+                result = ButtonResult.Cancel;
+            }
         }
-
-        private bool BtnOKCommandCanExecute()
+        public bool CanCloseDialog()
         {
             return IsValid;
         }
 
-        public bool CanCloseDialog()
+        public virtual void OnDialogClosed()
         {
-            throw new NotImplementedException();
+           
         }
 
-        public void OnDialogClosed()
+        public virtual void OnDialogOpened(IDialogParameters parameters)
         {
-            throw new NotImplementedException();
+            
         }
 
-        public void OnDialogOpened(IDialogParameters parameters)
+        public event Action<IDialogResult> RequestClose;
+
+        public virtual void RaiseRequestClose(IDialogResult dialogResult)
         {
-            throw new NotImplementedException();
+            RequestClose?.Invoke(dialogResult);
         }
+
     }
 }

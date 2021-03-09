@@ -49,11 +49,15 @@
                  Grid.Column="1"
                  Margin="10,12,10,12"/>
         <Button Name="btnAddViewOK"
+                Command="{Binding CloseBtnCommand}"
+                CommandParameter="True"
+                IsDefault="True"
                 Content="OK"
                 Grid.Column="0"
                 Grid.Row="3"
                 Margin="10,13,10,13"/>
         <Button Name="btnAddViewCancel"
+                IsCancel="True"
                 Content="Cancel"
                 Grid.Column="1"
                 Grid.Row="3"
