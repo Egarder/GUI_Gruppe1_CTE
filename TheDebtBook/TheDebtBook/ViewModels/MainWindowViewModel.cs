@@ -70,6 +70,12 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+        private string _title = "TheDebtBook";
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
         #endregion
 
 
@@ -118,19 +124,20 @@ namespace TheDebtBook.ViewModels
             {
                 if (r.Result == ButtonResult.None)
                 {
-
+                    Title = "Result is None";
                 }
                 else if (r.Result == ButtonResult.OK)
                 {
+                    Title = "Result is OK";
                     CurrentDebitorCreditor = ((App)Application.Current).Debitor;
                 }
                 else if (r.Result == ButtonResult.Cancel)
                 {
-
+                    Title = "Result is Cancel";
                 }
                 else
                 {
-                    
+                    Title = "I Don't know what you did!?";
                 }
 
 
