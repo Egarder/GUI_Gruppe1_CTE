@@ -88,19 +88,24 @@ namespace TheDebtBook.ViewModels
         {
             get
             {
-                return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(()=>
-                {
-                    var newDebitor = new Debitors("Insert name");
-                    //Is AddView, naming error
-                    _iDialogService.ShowDialog("DebtsView", null, (r) =>
-                       {
-                           _debitorsCreditors.Add(newDebitor);
-                           CurrentDebitorCreditor = newDebitor;
-                       });
-                }));
+                return _addDebtorCommand ?? (_addDebtorCommand = new DelegateCommand(AddDebtorCommandExecute));
             }
         }
 
+        public void AddDebtorCommandExecute()
+        {
+            //var newDebitor = new Debitors("Insert name");
+            //Is AddView, naming error
+            _iDialogService.ShowDialog("DebtsView", null, (r) =>
+            {
+                if (r.Result == ButtonResult.OK)
+                {
+                    DebitorsCreditors.Add(((App)Application.Current).Debitor);
+                    CurrentDebitorCreditor = DebitorsCreditors[0];
+                }
+                
+            });
+        }
 
         //Go to EditShowDetailView
         private DelegateCommand _editDebtorCommand;
