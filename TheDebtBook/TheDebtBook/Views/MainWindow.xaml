@@ -90,6 +90,8 @@
                         <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                     </Button.Effect>
             </Button>
+            <Button Command="{Binding Path=SaveFileCommand}">Save to file</Button>
+            <Button >Load file with debitors</Button>
         </WrapPanel>
 
     </Grid>
