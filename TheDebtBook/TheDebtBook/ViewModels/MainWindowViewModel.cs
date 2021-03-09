@@ -39,9 +39,10 @@ namespace TheDebtBook.ViewModels
                 new Debitors("Rasmus Trads",(new Debt("dildos",-100))),
                 new Debitors("Kurt Thorsen",(new Debt("cocaine",-1000))),
                 new Debitors("Stein Bagger",(new Debt("teddybears",-1000)))
-
                 #endif
             };
+
+            DebitorsCreditors[0].addDebt("awsomeness",10000);
         }
 
         #region Properties
@@ -69,6 +70,12 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+        private string _title = "TheDebtBook";
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
         #endregion
 
 
@@ -115,7 +122,25 @@ namespace TheDebtBook.ViewModels
 
             _iDialogService.ShowDialog("DebtorsView", null, r =>
             {
-                
+                if (r.Result == ButtonResult.None)
+                {
+                    Title = "Result is None";
+                }
+                else if (r.Result == ButtonResult.OK)
+                {
+                    Title = "Result is OK";
+                    CurrentDebitorCreditor = ((App)Application.Current).Debitor;
+                }
+                else if (r.Result == ButtonResult.Cancel)
+                {
+                    Title = "Result is Cancel";
+                }
+                else
+                {
+                    Title = "I Don't know what you did!?";
+                }
+
+
             });
 
         }
