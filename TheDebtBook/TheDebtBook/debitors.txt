@@ -1,3 +1,1 @@
-Debitor: Rasmus Trads Balance: 9900 
-Debitor: Kurt Thorsen Balance: -1000 
-Debitor: Stein Bagger Balance: -1000 
+
