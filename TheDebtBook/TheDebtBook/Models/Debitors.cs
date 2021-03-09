@@ -48,6 +48,12 @@ namespace TheDebtBook.Models
                 _debts.Add(debt);
         }
 
+        public ObservableCollection<Debt> Debts
+        {
+            get { return _debts; }
+            set { SetProperty(ref _debts, value); }
+        }
+
         public string SumOfDebt()
         {
             double tempdebt = 0;
