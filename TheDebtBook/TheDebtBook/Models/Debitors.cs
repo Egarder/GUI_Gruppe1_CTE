@@ -58,7 +58,7 @@ namespace TheDebtBook.Models
         {
             double tempdebt = 0;
 
-            foreach (Debt element in _debts)
+            foreach (Debt element in Debts)
             {
                 tempdebt += element.Amount;
             }
