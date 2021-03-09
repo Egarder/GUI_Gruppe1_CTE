@@ -19,6 +19,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 namespace TheDebtBook.ViewModels
 {
@@ -97,15 +98,21 @@ namespace TheDebtBook.ViewModels
 
         private void SaveFileCommandExecute()
         {
-            using (BinaryWriter sw = new BinaryWriter(saveFile.OpenFile()))
-                 {
+            var sb = new StringBuilder();
+
+            using (var sw = new StreamWriter(@"C:\Users\Emil Garder\source\repos\I4GUI\Gruppe1Repo\GUI_Gruppe1_CTE\TheDebtBook\TheDebtBook\debitors.txt"))
+            {
                     foreach (var item in DebitorsCreditors)
                     {
-                        sw.Write(item.ToString());
-                        sw.Flush();
+                        sb.Clear();
+
+                        sb.Append($"Debitor: {item.Name} Balance: {item.Balance}");
+                        sb.Append(" ");
+
+                        sw.WriteLine(sb.ToString());
                     }
-                    sw.Close();
-                }
+                    MessageBox.Show("Debitors saved!");
+            }
             
         }
 
