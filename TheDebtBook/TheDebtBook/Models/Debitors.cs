@@ -20,7 +20,7 @@ namespace TheDebtBook.Models
             this._name = copy._name;
             this._balance = copy._balance;
             this._latestdate = copy._latestdate;
-            this._debts = copy._debts;
+            this._debts = new ObservableCollection<Debt>(copy._debts);
             this._currentDebt = copy._currentDebt;
         }
 

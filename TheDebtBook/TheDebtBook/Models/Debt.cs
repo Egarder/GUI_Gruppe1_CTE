@@ -14,6 +14,7 @@ namespace TheDebtBook.Models
         private string _lastupdated;
 
         // Default constructor
+
         public Debt()
         { }
 
@@ -21,6 +22,14 @@ namespace TheDebtBook.Models
         public Debt(double amount)
         {
             _amount = amount;
+        }
+
+        // copy constructor
+        public Debt(Debt copy)
+        {
+            _amount = copy._amount;
+            _postname = copy._postname;
+            _lastupdated = copy._lastupdated;
         }
 
         public Debt(string postname, double amount)

@@ -113,19 +113,22 @@ namespace TheDebtBook.ViewModels
 
         public void ShowEditDebtorCommand()
         {
-            Debitors copydebitor = new Debitors(CurrentDebitorCreditor);
+            Debitors copydebitor = new Debitors(DebitorsCreditors[CurrentIndex]);
 
-            ((App)Application.Current).Debitor = CurrentDebitorCreditor;
+            ((App)Application.Current).Debitor = DebitorsCreditors[CurrentIndex];
 
             _iDialogService.ShowDialog("EditShowDetailView", null, r =>
             {
                 if (r.Result == ButtonResult.OK)
                 {
-                    CurrentDebitorCreditor = ((App)Application.Current).Debitor;
-                    CurrentDebitorCreditor.UpdateBalance();
+                    DebitorsCreditors[CurrentIndex] = ((App)Application.Current).Debitor;
+                    DebitorsCreditors[CurrentIndex].UpdateBalance();
                 }
                 else
-                    CurrentDebitorCreditor = copydebitor;
+                {
+                    DebitorsCreditors[CurrentIndex] = copydebitor;
+                    DebitorsCreditors[CurrentIndex].UpdateBalance();
+                }
             });
 
         }

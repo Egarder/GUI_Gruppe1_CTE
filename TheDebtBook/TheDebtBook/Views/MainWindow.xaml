@@ -35,6 +35,7 @@
             <DataGrid MinHeight="200" MaxWidth="230"
                       ItemsSource="{Binding Path=DebitorsCreditors}"
                       SelectedItem="{Binding Path=CurrentDebitorCreditor}"
+                      SelectedIndex="{Binding Path=CurrentIndex}"
                       IsSynchronizedWithCurrentItem="True"
                       ItemTemplate="{StaticResource DebitorCreditorTemplate}"
                       IsReadOnly="true">

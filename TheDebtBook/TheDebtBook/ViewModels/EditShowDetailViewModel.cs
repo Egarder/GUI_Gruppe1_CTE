@@ -109,7 +109,6 @@ namespace TheDebtBook.ViewModels
 
         public void OnDialogClosed()
         {
-            CurrentDebitor.UpdateBalance();
             ((App)Application.Current).Debitor = CurrentDebitor;
         }
 
