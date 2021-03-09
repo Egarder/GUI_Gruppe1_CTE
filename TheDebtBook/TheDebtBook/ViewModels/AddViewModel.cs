@@ -17,21 +17,10 @@ namespace TheDebtBook.ViewModels
         private string _title = "Add Debitor";
         private bool _btnOKPressed;
 
-        public AddViewModel()
-        {
-        }
-        public AddViewModel(Debitors debitor)
-        {
-            CurrentDebitor = debitor;
-        }
-
         public Debitors CurrentDebitor
         {
             get { return _currentDebitor; }
-            set
-            {
-                SetProperty(ref _currentDebitor, value);
-            }
+            set => _currentDebitor = value;
         }
 
         public bool IsValid
@@ -68,11 +57,10 @@ namespace TheDebtBook.ViewModels
         protected virtual void CloseDialog(string parameter)
         {
             ButtonResult result = ButtonResult.None;
-            if (parameter.ToLower()=="True")
+            if (parameter?.ToLower()== "true")
             {
                 result = ButtonResult.OK;
                 BtnOKPressed = true;
-                
             }
             RaiseRequestClose(new DialogResult(result));
         }
@@ -83,7 +71,7 @@ namespace TheDebtBook.ViewModels
 
         public virtual void OnDialogClosed()
         {
-            if (BtnOKPressed == true)
+            if (BtnOKPressed)
             {
                 ((App)Application.Current).Debitor = CurrentDebitor;
             }
@@ -91,7 +79,7 @@ namespace TheDebtBook.ViewModels
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
-            CurrentDebitor.addDebt(CurrentDebitor.Name, 0.00);
+            CurrentDebitor = new Debitors("Default", 0.00, new Debt(0.00));
         }
 
         public event Action<IDialogResult> RequestClose;

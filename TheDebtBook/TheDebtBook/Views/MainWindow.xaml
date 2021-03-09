@@ -11,7 +11,7 @@
         Title="The Debt Book" Height="380" Width="280"
         Background="{StaticResource BackgroundBrush}">
 
-    <Grid>
+    <Grid UseLayoutRounding="True">
         <!-- Row definitions -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

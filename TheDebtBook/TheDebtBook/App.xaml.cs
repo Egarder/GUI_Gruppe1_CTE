@@ -25,8 +25,8 @@ namespace TheDebtBook
             return Container.Resolve<MainWindow>();
         }
 
-        public Debitors Debitor { get; set; }
+        private Debitors _debitor;
 
-        public Debt Debt { get; set; }
+        public Debitors Debitor { get => _debitor; set => _debitor = value; }
     }
 }
