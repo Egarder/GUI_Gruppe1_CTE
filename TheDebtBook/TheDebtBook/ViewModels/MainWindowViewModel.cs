@@ -96,14 +96,12 @@ namespace TheDebtBook.ViewModels
         {
             //var newDebitor = new Debitors("Insert name");
             //Is AddView, naming error
-            _iDialogService.ShowDialog("DebtsView", null, (r) =>
+            _iDialogService.ShowDialog("DebtsView", null, r =>
             {
                 if (r.Result == ButtonResult.OK)
                 {
                     DebitorsCreditors.Add(((App)Application.Current).Debitor);
-                    CurrentDebitorCreditor = DebitorsCreditors[0];
                 }
-                
             });
         }
 
