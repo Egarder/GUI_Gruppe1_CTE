@@ -26,5 +26,7 @@ namespace TheDebtBook
         }
 
         public Debitors Debitor { get; set; }
+
+        public Debt Debt { get; set; }
     }
 }

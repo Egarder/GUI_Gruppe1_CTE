@@ -41,8 +41,6 @@ namespace TheDebtBook.ViewModels
                 bool isValid = true;
                 if (string.IsNullOrWhiteSpace(CurrentDebitor.Name))
                     isValid = false;
-                if (string.IsNullOrWhiteSpace(CurrentDebitor.Balance))
-                    isValid = false;
                 return isValid;
             }
         }
@@ -84,7 +82,7 @@ namespace TheDebtBook.ViewModels
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
-            
+            CurrentDebitor.addDebt(CurrentDebitor.Name, 0.00);
         }
 
         public event Action<IDialogResult> RequestClose;

@@ -10,11 +10,14 @@ namespace TheDebtBook.Models
     public class Debitors: BindableBase
     {
         private string _name;
-        private string _balance;
+        private double _balance;
         private string _latestdate;
         private ObservableCollection<Debt> _debts;
 
-        public Debitors() { }
+        public Debitors() 
+        {
+            _debts = new ObservableCollection<Debt>();
+        }
         public Debitors(string name)
         {
             _name = name;
@@ -22,7 +25,7 @@ namespace TheDebtBook.Models
         }
 
         // +1 overload
-        public Debitors(string name, string balance)
+        public Debitors(string name, double balance)
         {
             _name = name;
             _balance = balance;
@@ -36,9 +39,9 @@ namespace TheDebtBook.Models
             if (debt != null)
                 _debts.Add(debt);
 
-            _balance = debt.Amount.ToString();
+            _balance = debt.Amount;
         }
-        public Debitors(string name, string balance, Debt debt)
+        public Debitors(string name, double balance, Debt debt)
         {
             _name = name;
             _balance = balance;
@@ -54,16 +57,16 @@ namespace TheDebtBook.Models
             set { SetProperty(ref _debts, value); }
         }
 
-        public string SumOfDebt()
+        public double SumOfDebt()
         {
             double tempdebt = 0;
 
-            foreach (Debt element in _debts)
+            foreach (Debt element in Debts)
             {
-                tempdebt += element.Amount;
+                    tempdebt += element.Amount;
             }
 
-            return (tempdebt.ToString());
+            return tempdebt;
         }
 
         #region Properties
@@ -74,7 +77,7 @@ namespace TheDebtBook.Models
             set => _name = value;
         }
 
-        public string Balance
+        public double Balance
         {
             get { return SumOfDebt(); }
             set => _balance = value;
