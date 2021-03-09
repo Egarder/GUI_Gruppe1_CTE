@@ -16,16 +16,6 @@ namespace TheDebtBook.ViewModels
         private Debt _currentPost;
         private int currentIndex = -1;
 
-        public EditShowDetailViewModel(Debitors debitor)
-        {
-            CurrentDebitor = debitor;
-
-            DebitorCreditorDetails = new ObservableCollection<Debt>();
-
-            DebitorCreditorDetails = CurrentDebitor.Debts;
-
-            //CurrentPost = DebitorCreditorDetails[0];
-        }
 
         public int CurrentIndex
         {
@@ -52,7 +42,7 @@ namespace TheDebtBook.ViewModels
         public ObservableCollection<Debt> DebitorCreditorDetails
         {
             get { return _debitorCreditorDetails; }
-            set => _debitorCreditorDetails = value;
+            set { SetProperty(ref _debitorCreditorDetails, value); }
         }
 
 
@@ -67,8 +57,8 @@ namespace TheDebtBook.ViewModels
                 return _newPost ?? (_newPost = new DelegateCommand(() =>
                 {
                     var newpost = new Debt();
-                   DebitorCreditorDetails.Add(newpost);
-                   CurrentPost = newpost;
+                    if (DebitorCreditorDetails != null) DebitorCreditorDetails.Add(newpost);
+                    CurrentPost = newpost;
                    CurrentIndex = 0;
                 }));
             }
@@ -82,6 +72,31 @@ namespace TheDebtBook.ViewModels
             return true;
         }
 
+        private DelegateCommand<string> _closeDialogCommand;
+        public DelegateCommand<string> CloseDialogCommand =>
+            _closeDialogCommand ?? (_closeDialogCommand = new DelegateCommand<string>(CloseDialog));
+
+        protected virtual void CloseDialog(string parameter)
+        {
+            ButtonResult result = ButtonResult.None;
+
+            if (parameter?.ToLower() == "true")
+            {
+                result = ButtonResult.OK;
+                // Use the Application object to transfer data to the MainWindow
+                ((App)Application.Current).Debitor = CurrentDebitor;
+            }
+            else if (parameter?.ToLower() == "false")
+                result = ButtonResult.Cancel;
+
+            RaiseRequestClose(new DialogResult(result));
+        }
+
+        public virtual void RaiseRequestClose(IDialogResult dialogResult)
+        {
+            RequestClose?.Invoke(dialogResult);
+        }
+
         public void OnDialogClosed()
         {
             
@@ -90,6 +105,10 @@ namespace TheDebtBook.ViewModels
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
             CurrentDebitor = ((App)Application.Current).Debitor;
+
+            DebitorCreditorDetails = new ObservableCollection<Debt>();
+
+            DebitorCreditorDetails = CurrentDebitor.Debts;
         }
 
         private string _title = "EditShowDetail dialog";
