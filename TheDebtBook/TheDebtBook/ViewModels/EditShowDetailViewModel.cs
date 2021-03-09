@@ -102,6 +102,7 @@ namespace TheDebtBook.ViewModels
             {
                 result = ButtonResult.OK;
                 CurrentDebitor.UpdateBalance();
+
                 // Use the Application object to transfer data to the MainWindow
                 ((App)Application.Current).Debitor = CurrentDebitor;
             }
@@ -118,7 +119,7 @@ namespace TheDebtBook.ViewModels
 
         public void OnDialogClosed()
         {
-            
+            CurrentDebitor.UpdateBalance();
         }
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
