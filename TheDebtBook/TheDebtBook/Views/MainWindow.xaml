@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         prism:ViewModelLocator.AutoWireViewModel="True"
 
-        Title="The Debt Book" Height="380" Width="280"
+        Title="The Debt Book" Height="480" Width="440"
         Background="{StaticResource BackgroundBrush}">
 
     <Grid UseLayoutRounding="True">
@@ -33,23 +33,52 @@
                 </Label.Effect>
             </Label>
 
-            <DataGrid MinHeight="200" MaxWidth="230"
+            <DataGrid MinHeight="300" MaxWidth="400" FontSize="11"
                       ItemsSource="{Binding Path=DebitorsCreditors}"
                       SelectedItem="{Binding Path=CurrentDebitorCreditor}"
                       SelectedIndex="{Binding Path=CurrentIndex}"
                       IsSynchronizedWithCurrentItem="True"
-                      ItemTemplate="{StaticResource DebitorCreditorTemplate}"
-                      IsReadOnly="true">
+                      IsReadOnly="true"
+                      AutoGenerateColumns="False">
+                
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Width="1.2*" Binding="{Binding Name}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                                <Setter Property="Margin" Value="2"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Balance" Width="1*" Binding="{Binding Balance, StringFormat=' {0:##,#.0} kr.'}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Right"/>
+                                <Setter Property="Margin" Value="2"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Date" Width="1.1*" Binding="{Binding LatestDebt}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Right"/>
+                                <Setter Property="Margin" Value="2"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
 
+                
                 <DataGrid.InputBindings>
-                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=EditDebtorCommand}"></MouseBinding>
+                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=EditDebtorCommand}"/>
                 </DataGrid.InputBindings>
                 <DataGrid.Effect>
                     <DropShadowEffect ShadowDepth="2"/>
                 </DataGrid.Effect>
             </DataGrid>
         </StackPanel>
-
+     
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
             <Button Content="Add Debitor/Creditor" Command="{Binding Path=AddDebtorCommand}">
                 <Button.Effect>
