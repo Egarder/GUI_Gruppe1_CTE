@@ -74,7 +74,7 @@ namespace TheDebtBook.Models
         public string Name
         {
             get { return _name; }
-            set => _name = value;
+            set { SetProperty(ref _name, value); }
         }
 
         public double Balance
