@@ -92,6 +92,11 @@ namespace TheDebtBook.ViewModels
             RaiseRequestClose(new DialogResult(result));
         }
 
+        public virtual void RaiseRequestClose(IDialogResult dialogResult)
+        {
+            RequestClose?.Invoke(dialogResult);
+        }
+
         public void OnDialogClosed()
         {
             
