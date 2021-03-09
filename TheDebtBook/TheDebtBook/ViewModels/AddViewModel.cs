@@ -15,7 +15,7 @@ namespace TheDebtBook.ViewModels
     {
         Debitors _currentDebitor;
         private string _title = "Add Debitor";
-        
+        private bool _btnOKPressed;
 
         public AddViewModel()
         {
@@ -54,21 +54,27 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+        public bool BtnOKPressed
+        {
+            get { return _btnOKPressed; }
+            set
+            {
+                SetProperty(ref _btnOKPressed, value);
+            }
+        }
         DelegateCommand<string> _closeBtnCommand;
         public DelegateCommand<string> CloseBtnCommand => _closeBtnCommand ?? (_closeBtnCommand = new DelegateCommand<string>(CloseDialog));
 
         protected virtual void CloseDialog(string parameter)
         {
             ButtonResult result = ButtonResult.None;
-            if (parameter.ToLower()=="true")
+            if (parameter.ToLower()=="True")
             {
                 result = ButtonResult.OK;
-                ((App)Application.Current).Debitor = CurrentDebitor;
+                BtnOKPressed = true;
+                
             }
-            else if(parameter.ToLower() == "false")
-            {
-                result = ButtonResult.Cancel;
-            }
+            RequestClose(new DialogResult(result));
         }
         public bool CanCloseDialog()
         {
@@ -77,7 +83,10 @@ namespace TheDebtBook.ViewModels
 
         public virtual void OnDialogClosed()
         {
-           
+            if (BtnOKPressed == true)
+            {
+                ((App)Application.Current).Debitor = CurrentDebitor;
+            }
         }
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
