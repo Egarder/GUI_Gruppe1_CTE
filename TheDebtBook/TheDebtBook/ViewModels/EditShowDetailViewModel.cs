@@ -72,6 +72,26 @@ namespace TheDebtBook.ViewModels
             return true;
         }
 
+        private DelegateCommand<string> _closeDialogCommand;
+        public DelegateCommand<string> CloseDialogCommand =>
+            _closeDialogCommand ?? (_closeDialogCommand = new DelegateCommand<string>(CloseDialog));
+
+        protected virtual void CloseDialog(string parameter)
+        {
+            ButtonResult result = ButtonResult.None;
+
+            if (parameter?.ToLower() == "true")
+            {
+                result = ButtonResult.OK;
+                // Use the Application object to transfer data to the MainWindow
+                ((App)Application.Current).Debitor = CurrentDebitor;
+            }
+            else if (parameter?.ToLower() == "false")
+                result = ButtonResult.Cancel;
+
+            RaiseRequestClose(new DialogResult(result));
+        }
+
         public void OnDialogClosed()
         {
             
