@@ -16,7 +16,7 @@ namespace TheDebtBook
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<MainWindow, MainWindowViewModel>();
-            containerRegistry.RegisterDialog<DebtsView, AddViewModel>();
+            containerRegistry.RegisterDialog<AddView, AddViewModel>();
             containerRegistry.RegisterDialog<DebtorsView, EditShowDetailViewModel>();
         }
 
@@ -25,8 +25,13 @@ namespace TheDebtBook
             return Container.Resolve<MainWindow>();
         }
 
-        private Debitors _debitor;
+        private Debitors debitors = new Debitors();
 
-        public Debitors Debitor { get => _debitor; set => _debitor = value; }
+        public Debitors Debitor
+        {
+            get { return debitors; }
+
+            set => debitors = value;
+        }
     }
 }

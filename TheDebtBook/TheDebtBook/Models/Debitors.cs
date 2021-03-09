@@ -7,14 +7,15 @@ using Prism.Mvvm;
 
 namespace TheDebtBook.Models
 {
-    public class Debitors: BindableBase
+    public class Debitors : BindableBase
     {
         private string _name;
         private double _balance;
         private string _latestdate;
         private ObservableCollection<Debt> _debts;
+        private double _currentDebt;
 
-        public Debitors() 
+        public Debitors()
         {
             _debts = new ObservableCollection<Debt>();
         }
@@ -47,7 +48,7 @@ namespace TheDebtBook.Models
             _balance = balance;
             _debts = new ObservableCollection<Debt>();
 
-            if (debt != null) 
+            if (debt != null)
                 _debts.Add(debt);
         }
 
@@ -63,7 +64,7 @@ namespace TheDebtBook.Models
 
             foreach (Debt element in Debts)
             {
-                    tempdebt += element.Amount;
+                tempdebt += element.Amount;
             }
 
             return tempdebt;
@@ -74,6 +75,7 @@ namespace TheDebtBook.Models
         public string Name
         {
             get { return _name; }
+
             set { SetProperty(ref _name, value); }
         }
 
@@ -99,6 +101,16 @@ namespace TheDebtBook.Models
            Balance = SumOfDebt();
        }
 
+       public double CurrentDebt
+        {
+            get => _currentDebt;
+            set
+            {
+                SetProperty(ref _currentDebt, value);
+                Debts.Add(new Debt(_currentDebt));
+                UpdateBalance();
+            }
+        }
         #endregion
     }
 }

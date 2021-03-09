@@ -24,5 +24,6 @@ namespace TheDebtBook.Views
         {
             InitializeComponent();
         }
+
     }
 }

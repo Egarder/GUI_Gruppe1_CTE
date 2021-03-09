@@ -1,9 +1,8 @@
-﻿<UserControl x:Class="TheDebtBook.Views.DebtsView"
+﻿<UserControl x:Class="TheDebtBook.Views.AddView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TheDebtBook.Views"
              xmlns:prism="http://prismlibrary.com/"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200"
@@ -39,12 +38,12 @@
                    VerticalAlignment="Center"
                    Margin="10"/>
         <TextBox Name="txbAddViewName"
-                 Text="{Binding Path=CurrentDebitor.Name}"
+                 Text="{Binding Path= CurrentDebitor.Name}"
                  Grid.Row="1"
                  Grid.Column="1"
                  Margin="10,12,10,12"/>
         <TextBox Name="txbAddViewDept"
-                 Text="{Binding Path=CurrentDebitor.Debts}"
+                 Text="{Binding Path=CurrentDebitor.CurrentDebt}"
                  Grid.Row="2"
                  Grid.Column="1"
                  Margin="10,12,10,12"/>
