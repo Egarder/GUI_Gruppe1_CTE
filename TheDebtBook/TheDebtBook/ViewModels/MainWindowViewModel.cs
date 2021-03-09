@@ -18,12 +18,13 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Threading;
-
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace TheDebtBook.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+        private SaveFileDialog saveFile = new SaveFileDialog();
         private IDialogService _iDialogService;
         private ObservableCollection<Debitors> _debitorsCreditors;
         private Debitors _currentDebitorCreditor = null;
@@ -50,6 +51,7 @@ namespace TheDebtBook.ViewModels
         public ObservableCollection<Debitors> DebitorsCreditors
         {
             get { return _debitorsCreditors; }
+            set { SetProperty(ref _debitorsCreditors, value); }
         }
 
         public Debitors CurrentDebitorCreditor
@@ -131,6 +133,21 @@ namespace TheDebtBook.ViewModels
                 }
             });
 
+        }
+
+        private ICommand _removeDebitor;
+
+        public ICommand RemoveDebitor
+        {
+            get
+            {
+                return _removeDebitor ?? (_removeDebitor = new DelegateCommand(() => RemoveDebitorCommand()));
+            }
+        }
+
+        private void RemoveDebitorCommand()
+        {
+            DebitorsCreditors.RemoveAt(CurrentIndex);
         }
 
 

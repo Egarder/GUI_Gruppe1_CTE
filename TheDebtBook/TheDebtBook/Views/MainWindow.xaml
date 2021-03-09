@@ -16,10 +16,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- layout -->
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="1">
             <Label  Content="My Debt Book" HorizontalAlignment="Center">
                 <Label.Effect>
                     <DropShadowEffect Color="Black" ShadowDepth="2" RenderingBias="Performance" BlurRadius="10"/>
@@ -49,13 +50,13 @@
             </DataGrid>
         </StackPanel>
 
-        <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
             <Button Content="Add Debitor/Creditor" Command="{Binding Path=AddDebtorCommand}">
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                 </Button.Effect>
             </Button>
-            <Button Content="Remove debitor/creditor">
+            <Button Content="Remove debitor/creditor" Command="{Binding Path=RemoveDebitor}">
                     <Button.Effect>
                         <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
                     </Button.Effect>
