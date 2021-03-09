@@ -59,12 +59,30 @@ namespace TheDebtBook.ViewModels
                     var newpost = new Debt();
                     if (DebitorCreditorDetails != null) DebitorCreditorDetails.Add(newpost);
                     CurrentPost = newpost;
-                   CurrentIndex = 0;
+                   ++CurrentIndex;
+                   CurrentDebitor.UpdateBalance();
                 }));
             }
         }
 
+        ICommand _deletePostCommand;
+        public ICommand DeletePostCommand => _deletePostCommand ?? (_deletePostCommand = new DelegateCommand(DeletePost, DeletePost_CanExecute).ObservesProperty(() => CurrentIndex));
 
+        private void DeletePost()
+        {
+            MessageBoxResult res = MessageBox.Show("Are you sure you want to delete post " + CurrentPost.PostName + "?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            if (res == MessageBoxResult.Yes)
+            {
+                DebitorCreditorDetails.Remove(CurrentPost);
+            }
+
+            CurrentDebitor.UpdateBalance();
+        }
+
+        private bool DeletePost_CanExecute()
+        {
+            return true;
+        }
 
         //Dialogaware
         public bool CanCloseDialog()
@@ -83,6 +101,7 @@ namespace TheDebtBook.ViewModels
             if (parameter?.ToLower() == "true")
             {
                 result = ButtonResult.OK;
+                CurrentDebitor.UpdateBalance();
                 // Use the Application object to transfer data to the MainWindow
                 ((App)Application.Current).Debitor = CurrentDebitor;
             }
