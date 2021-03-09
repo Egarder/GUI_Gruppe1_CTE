@@ -113,37 +113,19 @@ namespace TheDebtBook.ViewModels
 
         public void ShowEditDebtorCommand()
         {
-            var tempdebitor = new Debitors()
-            {
-                Debts = CurrentDebitorCreditor.Debts,
-                Name = CurrentDebitorCreditor.Name,
-                Balance = CurrentDebitorCreditor.Balance,
-                LatestDebt = CurrentDebitorCreditor.LatestDebt
-            };
+            Debitors copydebitor = new Debitors(CurrentDebitorCreditor);
 
-            ((App) Application.Current).Debitor = tempdebitor;
+            ((App)Application.Current).Debitor = CurrentDebitorCreditor;
 
             _iDialogService.ShowDialog("DebtorsView", null, r =>
             {
-                if (r.Result == ButtonResult.None)
+                if (r.Result == ButtonResult.OK)
                 {
-                    Title = "Result is None";
-                }
-                else if (r.Result == ButtonResult.OK)
-                {
-                    Title = "Result is OK";
                     CurrentDebitorCreditor = ((App)Application.Current).Debitor;
-                }
-                else if (r.Result == ButtonResult.Cancel)
-                {
-                    Title = "Result is Cancel";
+                    CurrentDebitorCreditor.UpdateBalance();
                 }
                 else
-                {
-                    Title = "I Don't know what you did!?";
-                }
-
-
+                    CurrentDebitorCreditor = copydebitor;
             });
 
         }

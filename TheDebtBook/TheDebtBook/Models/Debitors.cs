@@ -15,6 +15,15 @@ namespace TheDebtBook.Models
         private ObservableCollection<Debt> _debts;
         private double _currentDebt;
 
+        public Debitors(Debitors copy)
+        {
+            this._name = copy._name;
+            this._balance = copy._balance;
+            this._latestdate = copy._latestdate;
+            this._debts = copy._debts;
+            this._currentDebt = copy._currentDebt;
+        }
+
         public Debitors()
         {
             _debts = new ObservableCollection<Debt>();
@@ -82,7 +91,10 @@ namespace TheDebtBook.Models
         public double Balance
         {
             get { return SumOfDebt(); }
-            set => _balance = value;
+            set
+            {
+                SetProperty(ref _balance, value);
+            }
         }
 
        public string LatestDebt 
@@ -111,6 +123,8 @@ namespace TheDebtBook.Models
                 UpdateBalance();
             }
         }
+
+
         #endregion
     }
 }

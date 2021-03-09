@@ -22,13 +22,11 @@
             <DataGrid 
                 MinHeight="150" 
                 Name="ListOfDetails"
-                ItemsSource="{Binding Path= DebitorCreditorDetails }"
+                ItemsSource="{Binding Path= CurrentDebitor.Debts }"
                 SelectedItem="{Binding Path= CurrentPost}"
-                SelectedIndex="{Binding Path=CurrentIndex}"
+                SelectedIndex="{Binding Path= CurrentIndex}"
                 IsSynchronizedWithCurrentItem="True"
-                CanUserAddRows="True"
-                CanUserDeleteRows="True"
-                IsReadOnly="False"
+                IsReadOnly="false"
                 ItemTemplate="{StaticResource DebtTemplate}"
                 >
 

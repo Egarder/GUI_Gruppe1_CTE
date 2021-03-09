@@ -12,8 +12,7 @@ namespace TheDebtBook.ViewModels
     public class EditShowDetailViewModel : BindableBase, IDialogAware
     {
         private Debitors _currentDebitor;
-        private ObservableCollection<Debt> _debitorCreditorDetails;
-        private Debt _currentPost;
+        private Debt _currentPost = new Debt();
         private int currentIndex = -1;
 
 
@@ -39,13 +38,6 @@ namespace TheDebtBook.ViewModels
         }
 
 
-        public ObservableCollection<Debt> DebitorCreditorDetails
-        {
-            get { return _debitorCreditorDetails; }
-            set { SetProperty(ref _debitorCreditorDetails, value); }
-        }
-
-
         ///Commands
         ///
         private ICommand _newPost;
@@ -56,11 +48,13 @@ namespace TheDebtBook.ViewModels
             {
                 return _newPost ?? (_newPost = new DelegateCommand(() =>
                 {
-                    var newpost = new Debt();
-                    if (DebitorCreditorDetails != null) DebitorCreditorDetails.Add(newpost);
-                    CurrentPost = newpost;
-                   ++CurrentIndex;
-                   CurrentDebitor.UpdateBalance();
+                    if (CurrentDebitor.Debts != null)
+                    {
+                        CurrentPost = new Debt();
+                        CurrentDebitor.Debts.Add(CurrentPost);
+                        ++CurrentIndex;
+                        CurrentDebitor.UpdateBalance();
+                    }
                 }));
             }
         }
@@ -73,7 +67,7 @@ namespace TheDebtBook.ViewModels
             MessageBoxResult res = MessageBox.Show("Are you sure you want to delete post " + CurrentPost.PostName + "?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
             if (res == MessageBoxResult.Yes)
             {
-                DebitorCreditorDetails.Remove(CurrentPost);
+                CurrentDebitor.Debts.Remove(CurrentPost);
             }
 
             CurrentDebitor.UpdateBalance();
@@ -100,11 +94,7 @@ namespace TheDebtBook.ViewModels
 
             if (parameter?.ToLower() == "true")
             {
-                result = ButtonResult.OK;
-                CurrentDebitor.UpdateBalance();
-
-                // Use the Application object to transfer data to the MainWindow
-                ((App)Application.Current).Debitor = CurrentDebitor;
+                result = ButtonResult.OK; 
             }
             else if (parameter?.ToLower() == "false")
                 result = ButtonResult.Cancel;
@@ -120,15 +110,12 @@ namespace TheDebtBook.ViewModels
         public void OnDialogClosed()
         {
             CurrentDebitor.UpdateBalance();
+            ((App)Application.Current).Debitor = CurrentDebitor;
         }
 
         public virtual void OnDialogOpened(IDialogParameters parameters)
         {
             CurrentDebitor = ((App)Application.Current).Debitor;
-
-            DebitorCreditorDetails = new ObservableCollection<Debt>();
-
-            DebitorCreditorDetails = CurrentDebitor.Debts;
         }
 
         private string _title = "EditShowDetail dialog";
