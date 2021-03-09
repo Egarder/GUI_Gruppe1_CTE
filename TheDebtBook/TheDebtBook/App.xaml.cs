@@ -17,7 +17,7 @@ namespace TheDebtBook
         {
             containerRegistry.RegisterForNavigation<MainWindow, MainWindowViewModel>();
             containerRegistry.RegisterDialog<AddView, AddViewModel>();
-            containerRegistry.RegisterDialog<DebtorsView, EditShowDetailViewModel>();
+            containerRegistry.RegisterDialog<EditShowDetailView, EditShowDetailViewModel>();
         }
 
         protected override Window CreateShell()
