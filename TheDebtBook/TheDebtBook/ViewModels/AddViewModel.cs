@@ -68,7 +68,7 @@ namespace TheDebtBook.ViewModels
                 result = ButtonResult.OK;
                 BtnOKPressed = true;
             }
-            RequestClose(new DialogResult(result));
+            RaiseRequestClose(new DialogResult(result));
         }
         public bool CanCloseDialog()
         {
