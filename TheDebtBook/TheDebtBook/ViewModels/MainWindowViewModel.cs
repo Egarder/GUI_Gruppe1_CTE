@@ -112,7 +112,7 @@ namespace TheDebtBook.ViewModels
         {
             var tempdebitor = new Debitors()
             {
-                _debts = CurrentDebitorCreditor._debts,
+                Debts = CurrentDebitorCreditor.Debts,
                 Name = CurrentDebitorCreditor.Name,
                 Balance = CurrentDebitorCreditor.Balance,
                 LatestDebt = CurrentDebitorCreditor.LatestDebt

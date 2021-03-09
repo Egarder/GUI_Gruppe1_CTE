@@ -24,7 +24,7 @@
             <DataGrid 
                 MinHeight="150" 
                 Name="ListOfDetails"
-                ItemsSource="{Binding Path= Debitor._debts }"
+                ItemsSource="{Binding Path= DebitorCreditorDetails }"
                 SelectedItem="{Binding Path= CurrentPost}"
                 SelectedIndex="{Binding Path=CurrentIndex}"
                 IsSynchronizedWithCurrentItem="True"
