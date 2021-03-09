@@ -14,9 +14,7 @@
             <TextBlock Text="Details of debt:" HorizontalAlignment="Center"/>
             <ToolBar HorizontalAlignment="Center">
                 <Button Content="Close window" Command="{Binding Path=CloseDialogCommand}" CommandParameter="true" IsDefault="True"/>
-                <Button Content="Add post"
-                        Command="{Binding Path = NewPost}"
-                />
+                <Button Content="Add post" Command="{Binding Path = NewPost}"/>
                 <Button Content="Remove post" Command="{Binding Path=DeletePostCommand}"/>
                 <Button Content="Cancel" IsCancel="True"></Button>
             </ToolBar>
