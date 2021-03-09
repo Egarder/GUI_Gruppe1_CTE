@@ -17,6 +17,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!-- layout -->
 
@@ -51,7 +52,7 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Balance" Width="1*" Binding="{Binding Balance, StringFormat=' {0:##,#.0} kr.'}">
+                    <DataGridTextColumn Header="Balance" Width="1*" Binding="{Binding Balance, StringFormat=' {0:##,#.} kr.'}">
                         <DataGridTextColumn.ElementStyle>
                             <Style TargetType="TextBlock">
                                 <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -80,20 +81,30 @@
         </StackPanel>
      
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
-            <Button Content="Add Debitor/Creditor" Command="{Binding Path=AddDebtorCommand}">
+            <Button Command="{Binding Path=AddDebtorCommand}">Add Debitor/Creditor
                 <Button.Effect>
-                    <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
+                    <DropShadowEffect ShadowDepth="2"/>
                 </Button.Effect>
             </Button>
-            <Button Content="Remove debitor/creditor" Command="{Binding Path=RemoveDebitor}">
-                    <Button.Effect>
-                        <DropShadowEffect ShadowDepth="2"></DropShadowEffect>
-                    </Button.Effect>
+            <Button Command="{Binding Path=RemoveDebitor}">Remove Debitor/Creditor
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="2"/>
+                </Button.Effect>
             </Button>
-            <Button Command="{Binding Path=SaveFileCommand}">Save to file</Button>
-            <Button >Load file with debitors</Button>
         </WrapPanel>
 
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center"> 
+            <Button Command="{Binding Path=SaveFileCommand}">Save to file
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="2"/>
+                </Button.Effect>
+            </Button>
+            <Button >Load file with debitors
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="2"/>
+                </Button.Effect>
+            </Button>
+        </WrapPanel>
     </Grid>
 
 </Window>
