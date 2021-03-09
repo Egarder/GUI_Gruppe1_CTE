@@ -36,6 +36,17 @@
                            Padding="5,0"/>
             </WrapPanel>
         </DataTemplate>
+
+        <DataTemplate x:Key="DebtTemplate">
+            <WrapPanel>
+                <TextBlock Text="{Binding Path=DebitorCreditorDetails}"
+                           Padding="5,0" MinWidth="200"/>
+                <TextBlock Text="{Binding Path=Balance}" 
+                           Padding="5,0" MinWidth="100"/>
+                <TextBlock Text="{Binding Path=LastUpdated}" 
+                           Padding="5,0"/>
+            </WrapPanel>
+        </DataTemplate>
     </Application.Resources>
 
 </prism:PrismApplication>

@@ -31,7 +31,7 @@
                 CanUserAddRows="True"
                 CanUserDeleteRows="True"
                 IsReadOnly="False"
-                ItemTemplate="{StaticResource DebitorCreditorTemplate}"
+                ItemTemplate="{StaticResource DebtTemplate}"
                 >
 
                 
