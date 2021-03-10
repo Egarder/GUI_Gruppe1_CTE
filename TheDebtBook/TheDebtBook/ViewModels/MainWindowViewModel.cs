@@ -87,7 +87,7 @@ namespace TheDebtBook.ViewModels
 
         #region Commands
 
-        //Open text file command
+        //Open json file command
 
         private ICommand _openFileCommandtxt;
 
@@ -119,7 +119,7 @@ namespace TheDebtBook.ViewModels
 
 
 
-        //Save as text command
+        //Save as json file command
         private ICommand _saveFileCommandjson;
 
         public ICommand SaveFileCommandJson
