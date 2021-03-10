@@ -113,6 +113,7 @@ namespace TheDebtBook.ViewModels
             {
                 string jsonString = File.ReadAllText(filename);
 
+                DebitorsCreditors.Clear();
                 DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
             }
         }
