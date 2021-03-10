@@ -102,7 +102,7 @@ namespace TheDebtBook.ViewModels
 
         private void OpenFileCommandExecuteTxt()
         {
-            OpenFileDialog fs = new OpenFileDialog();
+            OpenFileDialog fs = new OpenFileDialog() { Filter = "Json (.json)|.json" };
 
             DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(fs.FileName);
         }
