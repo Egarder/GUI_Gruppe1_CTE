@@ -34,7 +34,7 @@
                    Grid.Row="1"
                    VerticalAlignment="Center"
                    Margin="10"/>
-        <TextBlock Text="Dept"
+        <TextBlock Text="Start Balance"
                    Grid.Column="0"
                    Grid.Row="2"
                    VerticalAlignment="Center"
