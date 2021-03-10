@@ -147,6 +147,8 @@ namespace TheDebtBook.ViewModels
                 string jsonString = JsonSerializer.Serialize(DebitorsCreditors);
                 File.WriteAllText(filename, jsonString);
             }
+
+            MessageBox.Show("You did it!! You saved a file! :-D ");
         }
 
         private bool CommandCanExecute()

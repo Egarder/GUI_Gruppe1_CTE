@@ -65,6 +65,7 @@ namespace TheDebtBook.ViewModels
         private void DeletePost()
         {
             MessageBoxResult res = MessageBox.Show("Are you sure you want to delete post " + CurrentPost.PostName + "?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
+            
             if (res == MessageBoxResult.Yes)
             {
                 CurrentDebitor.Debts.Remove(CurrentPost);
