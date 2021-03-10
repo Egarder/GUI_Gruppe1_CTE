@@ -94,7 +94,7 @@
         </WrapPanel>
 
         <WrapPanel Grid.Row="3" HorizontalAlignment="Center">
-            <Button Command="{Binding Path=SaveFileCommandTxt}">Save to json file
+            <Button Command="{Binding Path=SaveFileCommandJson}">Save to json file
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"/>
                 </Button.Effect>

@@ -94,7 +94,7 @@ namespace TheDebtBook.ViewModels
         {
             get
             {
-                return _saveFileCommandtxt ?? (_saveFileCommandtxt =
+                return _openFileCommandtxt ?? (_openFileCommandtxt =
                     new DelegateCommand(OpenFileCommandExecuteTxt, CommandCanExecute).
                         ObservesProperty(() => DebitorsCreditors.Count));
             }
@@ -102,7 +102,9 @@ namespace TheDebtBook.ViewModels
 
         private void OpenFileCommandExecuteTxt()
         {
-            OpenFileDialog fs = new OpenFileDialog() { Filter = "Json (.json)|.json" };
+            OpenFileDialog fs = new OpenFileDialog();// { Filter = "Json (.json)|.json" };
+
+            fs.ShowDialog();
 
             DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(fs.FileName);
         }
@@ -110,13 +112,13 @@ namespace TheDebtBook.ViewModels
 
 
         //Save as text command
-        private ICommand _saveFileCommandtxt;
+        private ICommand _saveFileCommandjson;
 
-        public ICommand SaveFileCommandTxt
+        public ICommand SaveFileCommandJson
         {
             get
             {
-                return _saveFileCommandtxt ?? (_saveFileCommandtxt =
+                return _saveFileCommandjson ?? (_saveFileCommandjson =
                     new DelegateCommand(SaveFileCommandExecuteJson, CommandCanExecute).
                         ObservesProperty(() => DebitorsCreditors.Count));
             }
