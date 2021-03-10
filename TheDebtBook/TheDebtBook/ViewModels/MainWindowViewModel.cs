@@ -132,7 +132,7 @@ namespace TheDebtBook.ViewModels
 
             dialogsave.ShowDialog();
 
-            using (var sw = new BinaryWriter(dialogsave.FileName)) //local path to project
+            using (var sw = new JsonWriter(dialogsave.FileName)) //local path to project
             {
                     foreach (var item in DebitorsCreditors)
                     {
