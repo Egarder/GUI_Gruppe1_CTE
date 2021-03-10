@@ -103,10 +103,7 @@ namespace TheDebtBook.ViewModels
         {
             OpenFileDialog fs = new OpenFileDialog();
 
-            JsonSerializer.Deserialize<ObservableCollection>(Jsonstring);
-           foreach
-
-            weatherForecast = JsonSerializer.Deserialize<WeatherForecastWithPOCOs>(jsonString);
+            DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(fs.FileName);
         }
 
 
