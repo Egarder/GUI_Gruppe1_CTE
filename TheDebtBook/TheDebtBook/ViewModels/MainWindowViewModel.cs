@@ -117,14 +117,13 @@ namespace TheDebtBook.ViewModels
             get
             {
                 return _saveFileCommandtxt ?? (_saveFileCommandtxt =
-                    new DelegateCommand(SaveFileCommandExecuteTxt, CommandCanExecute).
+                    new DelegateCommand(SaveFileCommandExecuteJson, CommandCanExecute).
                         ObservesProperty(() => DebitorsCreditors.Count));
             }
         }
 
-        private void SaveFileCommandExecuteTxt()
+        private void SaveFileCommandExecuteJson()
         {
-            var sb = new StringBuilder();
 
             SaveFileDialog dialogsave = new SaveFileDialog() {CreatePrompt = true, OverwritePrompt = true, DefaultExt = "txt", Filter = "Text file (.txt)|.txt| JSON file (.json)|.json" };
 
@@ -132,20 +131,6 @@ namespace TheDebtBook.ViewModels
 
             string jsonString = JsonSerializer.Serialize(DebitorsCreditors);
             File.WriteAllText(dialogsave.FileName, jsonString);
-
-            //using (var sw = new JsonWriter() JsonWriter(dialogsave.FileName)) //local path to project
-            //{
-            //        foreach (var item in DebitorsCreditors)
-            //        {
-            //            sb.Clear();
-
-            //            sb.Append($"Debitor: {item.Name} Balance: {item.Balance}");
-            //            sb.Append(" ");
-
-            //            sw.WriteLine(sb.ToString());
-            //        }
-            //        MessageBox.Show("Debitors saved!");
-            //}
 
         }
 
