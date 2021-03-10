@@ -19,7 +19,8 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace TheDebtBook.ViewModels
 {
@@ -102,11 +103,9 @@ namespace TheDebtBook.ViewModels
         {
             OpenFileDialog fs = new OpenFileDialog();
 
-            using (var rw = new StreamReader(fs.FileName))
-            {
-                
-            }
 
+
+            weatherForecast = JsonSerializer.Deserialize<WeatherForecastWithPOCOs>(jsonString);
         }
 
 
