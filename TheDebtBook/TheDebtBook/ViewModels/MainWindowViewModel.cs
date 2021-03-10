@@ -106,8 +106,6 @@ namespace TheDebtBook.ViewModels
 
             fs.ShowDialog();
 
-            fs.ShowDialog();
-
             string jsonString = File.ReadAllText(fs.FileName);
 
             DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
