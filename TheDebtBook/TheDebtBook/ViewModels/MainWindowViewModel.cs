@@ -32,6 +32,7 @@ namespace TheDebtBook.ViewModels
         private ObservableCollection<Debitors> _debitorsCreditors;
         private Debitors _currentDebitorCreditor = null;
         private int _currentIndex = -1;
+        private string filename = "";
 
         public MainWindowViewModel(IDialogService dialogService)
         {
@@ -106,11 +107,14 @@ namespace TheDebtBook.ViewModels
 
             fs.ShowDialog();
 
-            fs.ShowDialog();
+            filename = fs.FileName;
 
-            string jsonString = File.ReadAllText(fs.FileName);
+            if (filename != "")
+            {
+                string jsonString = File.ReadAllText(filename);
 
-            DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
+                DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
+            }
         }
 
 
@@ -135,9 +139,13 @@ namespace TheDebtBook.ViewModels
 
             dialogsave.ShowDialog();
 
-            string jsonString = JsonSerializer.Serialize(DebitorsCreditors);
-            File.WriteAllText(dialogsave.FileName, jsonString);
+            filename = dialogsave.FileName;
 
+            if (filename != "")
+            {
+                string jsonString = JsonSerializer.Serialize(DebitorsCreditors);
+                File.WriteAllText(filename, jsonString);
+            }
         }
 
         private bool CommandCanExecute()
