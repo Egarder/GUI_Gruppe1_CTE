@@ -99,7 +99,9 @@
                     <DropShadowEffect ShadowDepth="2"/>
                 </Button.Effect>
             </Button>
-            <Button >Load file with debitors
+            <Button 
+                Command="{Binding Path=_OpenFileCommandTxt}"
+                >Load file with debitors
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"/>
                 </Button.Effect>

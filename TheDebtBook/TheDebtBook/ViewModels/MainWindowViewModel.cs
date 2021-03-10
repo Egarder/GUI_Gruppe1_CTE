@@ -19,6 +19,7 @@ using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -129,20 +130,23 @@ namespace TheDebtBook.ViewModels
 
             dialogsave.ShowDialog();
 
-            using (var sw = new JsonWriter(dialogsave.FileName)) //local path to project
-            {
-                    foreach (var item in DebitorsCreditors)
-                    {
-                        sb.Clear();
+            string jsonString = JsonSerializer.Serialize(DebitorsCreditors);
+            File.WriteAllText(dialogsave.FileName, jsonString);
 
-                        sb.Append($"Debitor: {item.Name} Balance: {item.Balance}");
-                        sb.Append(" ");
+            //using (var sw = new JsonWriter() JsonWriter(dialogsave.FileName)) //local path to project
+            //{
+            //        foreach (var item in DebitorsCreditors)
+            //        {
+            //            sb.Clear();
 
-                        sw.WriteLine(sb.ToString());
-                    }
-                    MessageBox.Show("Debitors saved!");
-            }
-            
+            //            sb.Append($"Debitor: {item.Name} Balance: {item.Balance}");
+            //            sb.Append(" ");
+
+            //            sw.WriteLine(sb.ToString());
+            //        }
+            //        MessageBox.Show("Debitors saved!");
+            //}
+
         }
 
         private bool CommandCanExecute()
