@@ -104,7 +104,11 @@ namespace TheDebtBook.ViewModels
         {
             OpenFileDialog fs = new OpenFileDialog() { Filter = "Json (.json)|.json" };
 
-            DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(fs.FileName);
+            fs.ShowDialog();
+
+            string jsonString = File.ReadAllText(fs.FileName);
+
+            DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
         }
 
 
