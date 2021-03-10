@@ -84,6 +84,34 @@ namespace TheDebtBook.ViewModels
 
         #region Commands
 
+        //Open text file command
+
+        private ICommand _openFileCommandtxt;
+
+        public ICommand _OpenFileCommandTxt
+        {
+            get
+            {
+                return _saveFileCommandtxt ?? (_saveFileCommandtxt =
+                    new DelegateCommand(OpenFileCommandExecuteTxt, CommandCanExecute).
+                        ObservesProperty(() => DebitorsCreditors.Count));
+            }
+        }
+
+        private void OpenFileCommandExecuteTxt()
+        {
+            OpenFileDialog fs = new OpenFileDialog();
+
+            using (var rw = new StreamReader(fs.FileName))
+            {
+                
+            }
+
+        }
+
+
+
+        //Save as text command
         private ICommand _saveFileCommandtxt;
 
         public ICommand SaveFileCommandTxt
@@ -91,7 +119,7 @@ namespace TheDebtBook.ViewModels
             get
             {
                 return _saveFileCommandtxt ?? (_saveFileCommandtxt =
-                    new DelegateCommand(SaveFileCommandExecuteTxt, SaveFileCommandCanExecute).
+                    new DelegateCommand(SaveFileCommandExecuteTxt, CommandCanExecute).
                         ObservesProperty(() => DebitorsCreditors.Count));
             }
         }
@@ -100,7 +128,11 @@ namespace TheDebtBook.ViewModels
         {
             var sb = new StringBuilder();
 
-            using (var sw = new StreamWriter(@"C:\Users\Emil Garder\source\repos\I4GUI\Gruppe1Repo\GUI_Gruppe1_CTE\TheDebtBook\TheDebtBook\debitors.txt")) //local path to project
+            SaveFileDialog dialogsave = new SaveFileDialog() {CreatePrompt = true, OverwritePrompt = true, DefaultExt = "txt", Filter = "Text file (.txt)|.txt| JSON file (.json)|.json" };
+
+            dialogsave.ShowDialog();
+
+            using (var sw = new BinaryWriter(dialogsave.FileName)) //local path to project
             {
                     foreach (var item in DebitorsCreditors)
                     {
@@ -116,7 +148,7 @@ namespace TheDebtBook.ViewModels
             
         }
 
-        private bool SaveFileCommandCanExecute()
+        private bool CommandCanExecute()
         {
             return true;
         }
