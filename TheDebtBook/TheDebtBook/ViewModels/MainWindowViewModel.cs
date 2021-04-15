@@ -122,10 +122,11 @@ namespace TheDebtBook.ViewModels
                 DebitorsCreditors.Clear();
                 DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
 
-                foreach (var debitor in DebitorsCreditors)
-                {
-                    debitor.Debts.RemoveAt(debitor.Debts.Count-1);
-                }
+                if (DebitorsCreditors != null)
+                    foreach (var debitor in DebitorsCreditors)
+                    {
+                        debitor.Debts.RemoveAt(debitor.Debts.Count - 1);
+                    }
             }
 
 
