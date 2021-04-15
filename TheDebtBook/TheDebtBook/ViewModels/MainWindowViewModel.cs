@@ -103,7 +103,7 @@ namespace TheDebtBook.ViewModels
 
         private void OpenFileCommandExecuteTxt()
         {
-            OpenFileDialog fs = new OpenFileDialog();// { Filter = "Json (.json)|.json" };
+            OpenFileDialog fs = new OpenFileDialog(); // { Filter = "Json (.json)|.json" };
 
             fs.ShowDialog();
 
@@ -114,6 +114,11 @@ namespace TheDebtBook.ViewModels
                 string jsonString = File.ReadAllText(filename);
 
                 DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
+
+                foreach (var debitor in DebitorsCreditors)
+                {
+                    debitor.Debts.RemoveAt(debitor.Debts.Count-1);
+                }
             }
         }
 
