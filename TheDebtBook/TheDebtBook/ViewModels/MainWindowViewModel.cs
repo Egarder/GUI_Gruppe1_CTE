@@ -37,19 +37,23 @@ namespace TheDebtBook.ViewModels
         public MainWindowViewModel(IDialogService dialogService)
         {
             _iDialogService = dialogService;
-            
-            _debitorsCreditors = new ObservableCollection<Debitors>()
-            {
-                #if DEBUG
-                new Debitors("Jenny ",(new Debt("Candy",-100))),
-                new Debitors("Poul ",(new Debt("WPF course",-1000))),
-                new Debitors("Einer",(new Debt(".net course",-1000)))
-                #endif
-            };
 
-            DebitorsCreditors[0].addDebt("awsomeness",10000);
-            DebitorsCreditors[1].addDebt("awsomeness", 10000);
-            DebitorsCreditors[2].addDebt("awsomeness", 10000);
+            if (_debitorsCreditors == null)
+            {
+                _debitorsCreditors = new ObservableCollection<Debitors>()
+                {
+#if DEBUG
+                    new Debitors("Jenny ",(new Debt("Candy",-100))),
+                    new Debitors("Poul ",(new Debt("WPF course",-1000))),
+                    new Debitors("Einer",(new Debt(".net course",-1000)))
+#endif
+                };
+
+                DebitorsCreditors[0].addDebt("awsomeness", 10000);
+                DebitorsCreditors[1].addDebt("awsomeness", 10000);
+                DebitorsCreditors[2].addDebt("awsomeness", 10000);
+            }
+            
         }
 
         #region Properties
@@ -118,6 +122,8 @@ namespace TheDebtBook.ViewModels
                 DebitorsCreditors.Clear();
                 DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
             }
+
+
         }
 
 
