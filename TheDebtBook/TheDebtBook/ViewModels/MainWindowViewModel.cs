@@ -43,16 +43,17 @@ namespace TheDebtBook.ViewModels
                 _debitorsCreditors = new ObservableCollection<Debitors>()
                 {
 #if DEBUG
-                    new Debitors("Jenny ",(new Debt("Candy",-100))),
-                    new Debitors("Poul ",(new Debt("WPF course",-1000))),
-                    new Debitors("Einer",(new Debt(".net course",-1000)))
+                    new Debitors("Jenny ", (new Debt("Candy", -100))),
+                    new Debitors("Poul ", (new Debt("WPF course", -1000))),
+                    new Debitors("Einer", (new Debt(".net course", -1000)))
 #endif
                 };
 
-            DebitorsCreditors[0].addDebt("awesomeness",10000);
-            DebitorsCreditors[0].addDebt("Please ikke lad os dumpe igen", 1);
-            DebitorsCreditors[1].addDebt("awesomeness", 10000);
-            DebitorsCreditors[2].addDebt("awesomeness", 10000);
+                DebitorsCreditors[0].addDebt("awesomeness", 10000);
+                DebitorsCreditors[0].addDebt("Please ikke lad os dumpe igen", 1);
+                DebitorsCreditors[1].addDebt("awesomeness", 10000);
+                DebitorsCreditors[2].addDebt("awesomeness", 10000);
+            }
         }
 
         #region Properties
