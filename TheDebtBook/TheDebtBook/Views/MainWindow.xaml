@@ -41,8 +41,8 @@
                       IsSynchronizedWithCurrentItem="True"
                       IsReadOnly="true"
                       AutoGenerateColumns="False">
-                
-                
+
+
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="1.2*" Binding="{Binding Name}">
                         <DataGridTextColumn.ElementStyle>
@@ -70,7 +70,7 @@
                     </DataGridTextColumn>
                 </DataGrid.Columns>
 
-                
+
                 <DataGrid.InputBindings>
                     <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=EditDebtorCommand}"/>
                 </DataGrid.InputBindings>
@@ -79,7 +79,7 @@
                 </DataGrid.Effect>
             </DataGrid>
         </StackPanel>
-     
+
         <WrapPanel Grid.Row="2" HorizontalAlignment="Center">
             <Button Command="{Binding Path=AddDebtorCommand}">Add Debitor/Creditor
                 <Button.Effect>
@@ -93,14 +93,16 @@
             </Button>
         </WrapPanel>
 
-        <WrapPanel Grid.Row="3" HorizontalAlignment="Center">
-            <Button Command="{Binding Path=SaveFileCommandJson}">Save to json file
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center" Margin="88,0" Width="256">
+            <Button Command="{Binding Path=SaveFileCommandJson}"
+                    MinWidth="108">Save to json file
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"/>
                 </Button.Effect>
             </Button>
             <Button 
                 Command="{Binding Path=_OpenFileCommandTxt}"
+                MinWidth="126"
                 >Load file with debitors
                 <Button.Effect>
                     <DropShadowEffect ShadowDepth="2"/>

@@ -41,13 +41,15 @@ namespace TheDebtBook.ViewModels
             _debitorsCreditors = new ObservableCollection<Debitors>()
             {
                 #if DEBUG
-                new Debitors("Rasmus Trads",(new Debt("dildos",-100))),
-                new Debitors("Kurt Thorsen",(new Debt("cocaine",-1000))),
-                new Debitors("Stein Bagger",(new Debt("teddybears",-1000)))
+                new Debitors("Jenny ",(new Debt("Candy",-100))),
+                new Debitors("Poul ",(new Debt("WPF course",-1000))),
+                new Debitors("Einer",(new Debt(".net course",-1000)))
                 #endif
             };
 
             DebitorsCreditors[0].addDebt("awsomeness",10000);
+            DebitorsCreditors[1].addDebt("awsomeness", 10000);
+            DebitorsCreditors[2].addDebt("awsomeness", 10000);
         }
 
         #region Properties
@@ -113,6 +115,7 @@ namespace TheDebtBook.ViewModels
             {
                 string jsonString = File.ReadAllText(filename);
 
+                DebitorsCreditors.Clear();
                 DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
 
                 foreach (var debitor in DebitorsCreditors)
@@ -151,6 +154,8 @@ namespace TheDebtBook.ViewModels
                 string jsonString = JsonSerializer.Serialize(DebitorsCreditors);
                 File.WriteAllText(filename, jsonString);
             }
+
+            MessageBox.Show("You did it!! You saved a file! :-D ");
         }
 
         private bool CommandCanExecute()
