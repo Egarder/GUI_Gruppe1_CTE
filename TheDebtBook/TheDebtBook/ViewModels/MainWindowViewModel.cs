@@ -128,11 +128,7 @@ namespace TheDebtBook.ViewModels
                         debitor.Debts.RemoveAt(debitor.Debts.Count - 1);
                     }
             }
-
-
         }
-
-
 
         //Save as json file command
         private ICommand _saveFileCommandjson;
