@@ -47,9 +47,10 @@ namespace TheDebtBook.ViewModels
                 #endif
             };
 
-            DebitorsCreditors[0].addDebt("awsomeness",10000);
-            DebitorsCreditors[1].addDebt("awsomeness", 10000);
-            DebitorsCreditors[2].addDebt("awsomeness", 10000);
+            DebitorsCreditors[0].addDebt("awesomeness",10000);
+            DebitorsCreditors[0].addDebt("Please ikke lad os dumpe igen", 1);
+            DebitorsCreditors[1].addDebt("awesomeness", 10000);
+            DebitorsCreditors[2].addDebt("awesomeness", 10000);
         }
 
         #region Properties
