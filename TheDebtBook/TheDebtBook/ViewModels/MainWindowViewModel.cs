@@ -49,11 +49,10 @@ namespace TheDebtBook.ViewModels
 #endif
                 };
 
-                DebitorsCreditors[0].addDebt("awsomeness", 10000);
-                DebitorsCreditors[1].addDebt("awsomeness", 10000);
-                DebitorsCreditors[2].addDebt("awsomeness", 10000);
-            }
-            
+            DebitorsCreditors[0].addDebt("awesomeness",10000);
+            DebitorsCreditors[0].addDebt("Please ikke lad os dumpe igen", 1);
+            DebitorsCreditors[1].addDebt("awesomeness", 10000);
+            DebitorsCreditors[2].addDebt("awesomeness", 10000);
         }
 
         #region Properties
@@ -109,7 +108,7 @@ namespace TheDebtBook.ViewModels
 
         private void OpenFileCommandExecuteTxt()
         {
-            OpenFileDialog fs = new OpenFileDialog();// { Filter = "Json (.json)|.json" };
+            OpenFileDialog fs = new OpenFileDialog(); // { Filter = "Json (.json)|.json" };
 
             fs.ShowDialog();
 
@@ -121,6 +120,11 @@ namespace TheDebtBook.ViewModels
 
                 DebitorsCreditors.Clear();
                 DebitorsCreditors = JsonSerializer.Deserialize<ObservableCollection<Debitors>>(jsonString);
+
+                foreach (var debitor in DebitorsCreditors)
+                {
+                    debitor.Debts.RemoveAt(debitor.Debts.Count-1);
+                }
             }
 
 
